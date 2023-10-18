@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lesson_1.databinding.ActivitySecondBinding
@@ -21,7 +22,6 @@ class SecondActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.editText.setOnKeyListener { _, keyCode, event ->
-            Toast.makeText(this, "empty", Toast.LENGTH_SHORT).show()
             if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 val texts = binding.editText.text.toString().split("\n")
                 texts.forEach {
