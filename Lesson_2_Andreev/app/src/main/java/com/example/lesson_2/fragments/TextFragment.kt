@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.lesson_2.databinding.FragmentTextBinding
@@ -25,9 +26,15 @@ class TextFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.buttonNext.setOnClickListener {
             val text = binding.textHolder.text.toString()
             findNavController().navigate(TextFragmentDirections.actionTextFragmentToEditFragment(text))
+        }
+
+        parentFragmentManager.setFragmentResultListener("editedtext", this) { _, bundle ->
+            val text = bundle.getString("text")
+            binding.textHolder.text = text
         }
 
         binding.textHolder.text = argsFromEditFragment.textViewValue
