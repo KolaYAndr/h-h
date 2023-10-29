@@ -6,18 +6,6 @@
     app:startDestination="@id/textFragment">
 
     <fragment
-        android:id="@+id/editFragment"
-        android:name="com.example.lesson_2.fragments.EditFragment"
-        android:label="fragment_edit"
-        tools:layout="@layout/fragment_edit">
-        <action
-            android:id="@+id/action_editFragment_to_textFragment"
-            app:destination="@id/textFragment" />
-        <argument
-            android:name="editTextValue"
-            app:argType="string" />
-    </fragment>
-    <fragment
         android:id="@+id/textFragment"
         android:name="com.example.lesson_2.fragments.TextFragment"
         android:label="fragment_text"
@@ -25,9 +13,18 @@
         <action
             android:id="@+id/action_textFragment_to_editFragment"
             app:destination="@id/editFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.example.lesson_2.fragments.EditFragment"
+        android:label="fragment_edit"
+        tools:layout="@layout/fragment_edit">
         <argument
             android:name="textViewValue"
             android:defaultValue=""
             app:argType="string" />
     </fragment>
+
 </navigation>

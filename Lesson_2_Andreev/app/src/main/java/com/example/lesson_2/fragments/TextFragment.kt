@@ -5,16 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.example.lesson_2.databinding.FragmentTextBinding
 
 class TextFragment : Fragment() {
     private var _binding: FragmentTextBinding? = null
     private val binding get() = _binding!!
 
-    private val argsFromEditFragment: TextFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,8 +33,6 @@ class TextFragment : Fragment() {
             val text = bundle.getString("text")
             binding.textHolder.text = text
         }
-
-        binding.textHolder.text = argsFromEditFragment.textViewValue
     }
 
     override fun onDestroyView() {
