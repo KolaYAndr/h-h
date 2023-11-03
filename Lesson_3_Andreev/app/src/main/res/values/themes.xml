@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:navigationBarColor">@color/black_20pc</item>
+    </style>
+
+    <style name="Theme.HnHApp" parent="Base.Theme.MyApplication">
+        <item name="android:statusBarColor">@color/black_20pc</item>
+        <item name="colorPrimary">@color/smalt</item>
+        <item name="textInputStyle">@style/Theme.HnHApp.TextInputLayout</item>
+    </style>
+</resources>
