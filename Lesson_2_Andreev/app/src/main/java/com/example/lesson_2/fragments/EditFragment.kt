@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.lesson_2.databinding.FragmentEditBinding
+import com.example.lesson_2.fragments.TextFragment.Companion.editedTextKey
+import com.example.lesson_2.fragments.TextFragment.Companion.textKey
 
 class EditFragment : Fragment() {
     private var _binding: FragmentEditBinding? = null
@@ -33,7 +35,7 @@ class EditFragment : Fragment() {
             if (argsFromTextFragment.textViewValue == text) {
                 findNavController().popBackStack()
             } else {
-                parentFragmentManager.setFragmentResult("editedtext", bundleOf("text" to text))
+                parentFragmentManager.setFragmentResult(editedTextKey, bundleOf(textKey to text))
                 parentFragmentManager.popBackStack()
             }
         }
