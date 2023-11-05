@@ -29,8 +29,8 @@ class TextFragment : Fragment() {
             findNavController().navigate(TextFragmentDirections.actionTextFragmentToEditFragment(text))
         }
 
-        parentFragmentManager.setFragmentResultListener(editedTextKey, this) { _, bundle ->
-            val text = bundle.getString(textKey)
+        parentFragmentManager.setFragmentResultListener(EDITED_TEXT_KEY, this) { _, bundle ->
+            val text = bundle.getString(TEXT_KEY)
             binding.textHolder.text = text
         }
     }
@@ -41,7 +41,7 @@ class TextFragment : Fragment() {
     }
 
     companion object {
-        const val editedTextKey = "editedText"
-        const val textKey = "text"
+        const val EDITED_TEXT_KEY = "editedText"
+        const val TEXT_KEY = "text"
     }
 }
