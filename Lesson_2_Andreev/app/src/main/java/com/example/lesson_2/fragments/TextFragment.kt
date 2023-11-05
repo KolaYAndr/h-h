@@ -29,8 +29,8 @@ class TextFragment : Fragment() {
             findNavController().navigate(TextFragmentDirections.actionTextFragmentToEditFragment(text))
         }
 
-        parentFragmentManager.setFragmentResultListener(editedTextKey, this) { _, bundle ->
-            val text = bundle.getString(textKey)
+        parentFragmentManager.setFragmentResultListener("editedtext", this) { _, bundle ->
+            val text = bundle.getString("text")
             binding.textHolder.text = text
         }
     }
@@ -38,10 +38,5 @@ class TextFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    companion object {
-        const val editedTextKey = "editedText"
-        const val textKey = "text"
     }
 }
