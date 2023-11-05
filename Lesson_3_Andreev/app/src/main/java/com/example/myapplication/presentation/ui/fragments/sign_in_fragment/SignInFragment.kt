@@ -5,7 +5,7 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doAfterTextChanged
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.R
@@ -31,14 +31,14 @@ class SignInFragment : Fragment() {
             findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToCatalogFragment())
         }
 
-        binding.editTextPassword.doAfterTextChanged {
-            if (it.isNullOrBlank()) binding.layoutPassword.error =
+        binding.editTextPassword.doOnTextChanged { text, _, _, _ ->
+            if (text.isNullOrBlank()) binding.layoutPassword.error =
                 getString(R.string.sign_in_password_error)
             else binding.layoutPassword.error = null
         }
 
-        binding.editTextLogin.doAfterTextChanged {
-            if (it.isNullOrEmpty() || !Patterns.EMAIL_ADDRESS.matcher(it)
+        binding.editTextLogin.doOnTextChanged { text, _, _, _ ->
+            if (text.isNullOrEmpty() || !Patterns.EMAIL_ADDRESS.matcher(text)
                     .matches()
             ) binding.layoutLogin.error = getString(R.string.sign_in_login_error)
             else binding.layoutLogin.error = null

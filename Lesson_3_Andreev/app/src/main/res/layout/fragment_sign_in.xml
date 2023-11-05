@@ -22,13 +22,14 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/normal_100"
         android:layout_marginTop="@dimen/normal_200"
+        android:imeOptions="actionNext"
         android:hint="@string/sign_in_login_hint">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextLogin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionNext" />
+            android:inputType="textEmailAddress"
+            android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -39,13 +40,14 @@
         android:layout_marginHorizontal="@dimen/normal_100"
         android:layout_marginTop="@dimen/normal_200"
         android:hint="@string/sign_in_password_hint"
+        android:imeOptions="actionDone"
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:imeOptions="actionDone" />
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
