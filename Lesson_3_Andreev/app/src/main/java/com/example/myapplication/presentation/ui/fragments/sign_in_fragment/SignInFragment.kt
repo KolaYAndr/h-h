@@ -28,7 +28,20 @@ class SignInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.signInButton.setOnClickListener {
-            findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToCatalogFragment())
+            //флаг наличия хотя бы одной ошибки
+            val errorFlag =
+                !binding.layoutPassword.error.isNullOrEmpty() || !binding.layoutLogin.error.isNullOrEmpty()
+            //флаг пустоты хотя бы одного из полей ввода
+            val emptinessFlag =
+                binding.editTextPassword.text.isNullOrEmpty() || binding.editTextLogin.text.isNullOrEmpty()
+            if (!errorFlag && !emptinessFlag)
+                findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToCatalogFragment())
+
+            if (binding.editTextPassword.text.isNullOrBlank()) binding.layoutPassword.error =
+                getString(R.string.sign_in_password_error)
+
+            if (binding.editTextLogin.text.isNullOrBlank()) binding.layoutLogin.error =
+                getString(R.string.sign_in_password_error)
         }
 
         binding.editTextPassword.doOnTextChanged { text, _, _, _ ->
