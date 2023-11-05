@@ -8,7 +8,6 @@ class Lesson4ViewModel : ViewModel() {
     private val _stringValue: MutableLiveData<String> = MutableLiveData()
     val stringValue: LiveData<String> = _stringValue
 
-
     fun changeStringValue(newStringValue: String){
         _stringValue.value = newStringValue
     }
