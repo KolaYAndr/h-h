@@ -29,32 +29,56 @@ class SignInFragment : Fragment() {
 
         binding.signInButton.setOnClickListener {
             //флаг наличия хотя бы одной ошибки
-            val errorFlag =
-                !binding.layoutPassword.error.isNullOrEmpty() || !binding.layoutLogin.error.isNullOrEmpty()
+            val errorFlag = checkErrors()
             //флаг пустоты хотя бы одного из полей ввода
-            val emptinessFlag =
-                binding.editTextPassword.text.isNullOrEmpty() || binding.editTextLogin.text.isNullOrEmpty()
+            val emptinessFlag = checkEmptiness()
             if (!errorFlag && !emptinessFlag)
                 findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToCatalogFragment())
 
-            if (binding.editTextPassword.text.isNullOrBlank()) binding.layoutPassword.error =
-                getString(R.string.sign_in_password_error)
-
-            if (binding.editTextLogin.text.isNullOrBlank()) binding.layoutLogin.error =
-                getString(R.string.sign_in_password_error)
+            setErrors()
         }
 
+        setPasswordDoOnTextChange()
+
+        setLoginDoOnTextChange()
+    }
+
+    private fun checkErrors() = !binding.layoutPassword.error.isNullOrEmpty() || !binding.layoutLogin.error.isNullOrEmpty()
+    private fun checkEmptiness() =
+    binding.editTextPassword.text.isNullOrEmpty() || binding.editTextLogin.text.isNullOrEmpty()
+
+    private fun setErrors() {
+        if (binding.editTextPassword.text.isNullOrBlank()) {
+            binding.layoutPassword.error =
+                getString(R.string.sign_in_password_error)
+            binding.layoutPassword.errorIconDrawable = null
+        }
+
+        if (binding.editTextLogin.text.isNullOrBlank()) {
+            binding.layoutLogin.error =
+                getString(R.string.sign_in_password_error)
+            binding.layoutLogin.errorIconDrawable = null
+        }
+    }
+
+    private fun setPasswordDoOnTextChange() {
         binding.editTextPassword.doOnTextChanged { text, _, _, _ ->
-            if (text.isNullOrBlank()) binding.layoutPassword.error =
-                getString(R.string.sign_in_password_error)
-            else binding.layoutPassword.error = null
+            if (text.isNullOrBlank()) {
+                binding.layoutPassword.error =
+                    getString(R.string.sign_in_password_error)
+                binding.layoutPassword.errorIconDrawable = null
+            } else binding.layoutPassword.error = null
         }
+    }
 
+    private fun setLoginDoOnTextChange() {
         binding.editTextLogin.doOnTextChanged { text, _, _, _ ->
             if (text.isNullOrEmpty() || !Patterns.EMAIL_ADDRESS.matcher(text)
                     .matches()
-            ) binding.layoutLogin.error = getString(R.string.sign_in_login_error)
-            else binding.layoutLogin.error = null
+            ) {
+                binding.layoutLogin.error = getString(R.string.sign_in_login_error)
+                binding.layoutLogin.errorIconDrawable = null
+            } else binding.layoutLogin.error = null
         }
     }
 }
