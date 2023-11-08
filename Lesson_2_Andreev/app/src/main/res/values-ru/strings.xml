@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="poem">Здесь Пушкин погребен; он с музой молодою,\n
+С любовью, леностью провел веселый век,\n
+Не делал доброго, однако ж был душою,\n
+Ей-богу, добрый человек</string>
+    <string name="button_1">Кнопка 1</string>
+    <string name="text_to_another_fragment">Передача текста во фрагментах</string>
+    <string name="go_to_three_fragment_activity">Активити на три фрагмента</string>
+    <string name="save">Сохранить</string>
+    <string name="edit">Редактировать</string>
+    <string name="logged_activity">Активити с логами</string>
+</resources>
