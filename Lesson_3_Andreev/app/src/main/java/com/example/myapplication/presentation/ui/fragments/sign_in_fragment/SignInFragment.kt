@@ -29,6 +29,8 @@ class SignInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setErrorIcons()
+
         binding.signInButton.setOnClickListener { goToCatalogScreen() }
 
         binding.editTextPassword.setOnKeyListener { _, keyCode, event ->
@@ -36,7 +38,6 @@ class SignInFragment : Fragment() {
         }
 
         setPasswordDoOnTextChange()
-
         setLoginDoOnTextChange()
     }
 
@@ -71,17 +72,20 @@ class SignInFragment : Fragment() {
     private fun checkEmptiness() =
         binding.editTextPassword.text.isNullOrEmpty() || binding.editTextLogin.text.isNullOrEmpty()
 
+    private fun setErrorIcons(){
+        binding.layoutPassword.errorIconDrawable = null
+        binding.layoutLogin.errorIconDrawable = null
+    }
+
     private fun setErrors() {
         if (binding.editTextPassword.text.isNullOrBlank()) {
             binding.layoutPassword.error =
                 getString(R.string.sign_in_password_error)
-            binding.layoutPassword.errorIconDrawable = null
         }
 
         if (binding.editTextLogin.text.isNullOrBlank()) {
             binding.layoutLogin.error =
                 getString(R.string.sign_in_password_error)
-            binding.layoutLogin.errorIconDrawable = null
         }
     }
 
