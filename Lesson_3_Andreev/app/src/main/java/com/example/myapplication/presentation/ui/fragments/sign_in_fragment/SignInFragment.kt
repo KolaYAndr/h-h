@@ -2,9 +2,11 @@ package com.example.myapplication.presentation.ui.fragments.sign_in_fragment
 
 import android.os.Bundle
 import android.util.Patterns
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -38,14 +40,31 @@ class SignInFragment : Fragment() {
             setErrors()
         }
 
+        binding.editTextPassword.setOnKeyListener { _, keyCode, event ->
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == EditorInfo.IME_ACTION_DONE) {
+                //флаг наличия хотя бы одной ошибки
+                val errorFlag = checkErrors()
+                //флаг пустоты хотя бы одного из полей ввода
+                val emptinessFlag = checkEmptiness()
+                if (!errorFlag && !emptinessFlag) {
+                    findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToCatalogFragment())
+                    return@setOnKeyListener true
+                }
+            }
+            setErrors()
+            false
+        }
+
         setPasswordDoOnTextChange()
 
         setLoginDoOnTextChange()
     }
 
-    private fun checkErrors() = !binding.layoutPassword.error.isNullOrEmpty() || !binding.layoutLogin.error.isNullOrEmpty()
+    private fun checkErrors() =
+        !binding.layoutPassword.error.isNullOrEmpty() || !binding.layoutLogin.error.isNullOrEmpty()
+
     private fun checkEmptiness() =
-    binding.editTextPassword.text.isNullOrEmpty() || binding.editTextLogin.text.isNullOrEmpty()
+        binding.editTextPassword.text.isNullOrEmpty() || binding.editTextLogin.text.isNullOrEmpty()
 
     private fun setErrors() {
         if (binding.editTextPassword.text.isNullOrBlank()) {
