@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance" parent="android:TextAppearance" />
+
+    <style name="TextAppearance.H1" parent="TextAppearance">
+        <item name="android:textSize">@dimen/text_h1_size</item>
+        <item name="android:lineSpacingExtra">@dimen/text_h1_line</item>
+    </style>
+
+    <style name="TextAppearance.Button" parent="TextAppearance">
+        <item name="android:textSize">@dimen/text_button_size</item>
+        <item name="android:lineSpacingExtra">@dimen/text_button_line</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+    <style name="TextAppearance.TextField" parent="TextAppearance">
+        <item name="android:textSize">@dimen/text_field_hint_size</item>
+    </style>
+
+    <style name="TextAppearance.TextField.Hint" parent="TextAppearance">
+        <item name="android:textSize">@dimen/text_field_hint_size</item>
+    </style>
+
+    <style name="TextAppearance.TextField.Error" parent="TextAppearance">
+        <item name="android:textSize">@dimen/text_field_error_size</item>
+    </style>
+
+    <style name="Theme.HnHApp.ShapeAppearanceButton">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/corner_round</item>
+    </style>
+
+    <style name="Theme.HnHApp.Button" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="shapeAppearance">@style/Theme.HnHApp.ShapeAppearanceButton</item>
+        <item name="android:textAppearance">@style/TextAppearance.Button</item>
+    </style>
+
+    <style name="Theme.HnHApp.ShapeAppearanceTextInputLayout" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/corner_round</item>
+        <item name="cornerSizeTopRight">@dimen/corner_round</item>
+    </style>
+
+    <style name="Theme.HnHApp.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">@color/seashell</item>
+        <item name="boxStrokeColor">@color/text_field_box_stroke_color</item>
+        <item name="shapeAppearance">@style/Theme.HnHApp.ShapeAppearanceTextInputLayout</item>
+        <item name="android:textAppearance">@style/TextAppearance.TextField</item>
+        <item name="hintTextAppearance">@style/TextAppearance.TextField.Hint</item>
+        <item name="errorTextAppearance">@style/TextAppearance.TextField.Error</item>
+        <item name="android:textColorHint">@color/silver_chalice</item>
+        <item name="hintTextColor">@color/silver_chalice</item>
+        <item name="errorTextColor">@color/text_field_error</item>
+    </style>
+</resources>
