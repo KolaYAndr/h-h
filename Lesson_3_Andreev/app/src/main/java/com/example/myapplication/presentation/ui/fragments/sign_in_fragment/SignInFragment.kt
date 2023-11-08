@@ -29,35 +29,40 @@ class SignInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.signInButton.setOnClickListener {
-            //флаг наличия хотя бы одной ошибки
-            val errorFlag = checkErrors()
-            //флаг пустоты хотя бы одного из полей ввода
-            val emptinessFlag = checkEmptiness()
-            if (!errorFlag && !emptinessFlag)
-                findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToCatalogFragment())
-
-            setErrors()
-        }
+        binding.signInButton.setOnClickListener { goToCatalogScreen() }
 
         binding.editTextPassword.setOnKeyListener { _, keyCode, event ->
-            if (event.action == KeyEvent.ACTION_DOWN && keyCode == EditorInfo.IME_ACTION_DONE) {
-                //флаг наличия хотя бы одной ошибки
-                val errorFlag = checkErrors()
-                //флаг пустоты хотя бы одного из полей ввода
-                val emptinessFlag = checkEmptiness()
-                if (!errorFlag && !emptinessFlag) {
-                    findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToCatalogFragment())
-                    return@setOnKeyListener true
-                }
-            }
-            setErrors()
-            false
+            goToCatalogScreen(keyCode, event)
         }
 
         setPasswordDoOnTextChange()
 
         setLoginDoOnTextChange()
+    }
+
+    private fun goToCatalogScreen() {
+        //флаг наличия хотя бы одной ошибки
+        val errorFlag = checkErrors()
+        //флаг пустоты хотя бы одного из полей ввода
+        val emptinessFlag = checkEmptiness()
+        if (!errorFlag && !emptinessFlag)
+            findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToCatalogFragment())
+        setErrors()
+    }
+
+    private fun goToCatalogScreen(keyCode: Int, event: KeyEvent): Boolean {
+        if (event.action == KeyEvent.ACTION_DOWN && keyCode == EditorInfo.IME_ACTION_DONE) {
+            //флаг наличия хотя бы одной ошибки
+            val errorFlag = checkErrors()
+            //флаг пустоты хотя бы одного из полей ввода
+            val emptinessFlag = checkEmptiness()
+            if (!errorFlag && !emptinessFlag) {
+                findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToCatalogFragment())
+                return true
+            }
+        }
+        setErrors()
+        return false
     }
 
     private fun checkErrors() =
