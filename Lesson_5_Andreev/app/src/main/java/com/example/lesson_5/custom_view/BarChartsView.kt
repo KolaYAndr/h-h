@@ -116,19 +116,35 @@ class BarChartsView @JvmOverloads constructor(
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-        super.onSizeChanged(w, h, oldw, oldh)
         val safeWidth = w - paddingLeft - paddingRight
         val safeHeight = h - paddingTop - paddingBottom
+        val minRatio = min(safeWidth / SCALE_WIDTH, safeHeight / SCALE_HEIGHT)
 
-        safeField.top = paddingTop.toFloat()
-        safeField.left = paddingLeft.toFloat()
-        safeField.right = safeField.left + safeWidth
-        safeField.bottom = safeField.top + safeHeight
+        val heightDifference = h - SCALE_HEIGHT * minRatio
+        val widthDifference = w - SCALE_WIDTH * minRatio
+
+        if (heightDifference != 0 && paddingTop == paddingBottom){
+            safeField.top = paddingTop + heightDifference / 2f
+            safeField.bottom = h - paddingBottom - heightDifference / 2f
+        }
+        else {
+            safeField.top = paddingTop.toFloat()
+            safeField.bottom = safeField.top + SCALE_HEIGHT * minRatio
+        }
+
+        if (widthDifference != 0 && paddingLeft == paddingRight){
+            safeField.left = paddingLeft + widthDifference / 2f
+            safeField.right = w - paddingRight - widthDifference / 2f
+        }
+        else {
+            safeField.left = paddingLeft.toFloat()
+            safeField.right = safeField.left + SCALE_WIDTH * minRatio
+        }
     }
 
     override fun onDraw(canvas: Canvas) {
         //drawText(canvas)
-        canvas.drawRect(safeField, Paint().apply { color = Color.BLACK })
+        canvas.drawRect(safeField, Paint().apply { color = Color.RED })
         drawBarCharts(canvas)
     }
 
@@ -178,13 +194,14 @@ class BarChartsView @JvmOverloads constructor(
         val step = safeField.width() / (number + 1)
 
         var counter = 1
+
+        val dateBound = Rect()
+        val percentBound = Rect()
         dataMap.forEach { entry ->
-            val dateBound = Rect()
-            val percentBound = Rect()
             val dateText = entry.key.date.toString() + "." + (entry.key.month + 1)
             val percentValue = entry.value / maxValue.toFloat()
             labelTextPaint.getTextBounds(dateText, 0, dateText.length, dateBound)
-            val percentValueString = (percentValue * 100).toInt().toString()
+            val percentValueString = (percentValue * maxValue).toInt().toString()
             labelTextPaint.getTextBounds(
                 percentValueString,
                 0,
@@ -192,8 +209,10 @@ class BarChartsView @JvmOverloads constructor(
                 percentBound
             )
 
-            val lineStart = safeField.bottom - 2 * STANDARD_PADDING - dateBound.height() //нижняя точка столбца
-            val lineMaxEnd = safeField.top + 2 * STANDARD_PADDING + percentBound.height() //конец для линии максимальной длины
+            val lineStart =
+                safeField.bottom - 2 * STANDARD_PADDING - dateBound.height() //нижняя точка столбца
+            val lineMaxEnd =
+                safeField.top + 2 * STANDARD_PADDING + percentBound.height() //конец для линии максимальной длины
             val lineHeight = lineStart - lineMaxEnd //длина максимальной линии
             val lineEnd = lineStart - lineHeight * percentValue //конец заданной линии
 
