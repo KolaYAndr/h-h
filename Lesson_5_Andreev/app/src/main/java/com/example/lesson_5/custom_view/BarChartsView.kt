@@ -1,5 +1,6 @@
 package com.example.lesson_5.custom_view
 
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
@@ -8,6 +9,8 @@ import android.graphics.Rect
 import android.graphics.RectF
 import android.graphics.Typeface
 import android.util.AttributeSet
+import android.view.GestureDetector
+import android.view.MotionEvent
 import android.view.View
 import com.example.lesson_5.R
 import java.util.Date
@@ -29,7 +32,45 @@ class BarChartsView @JvmOverloads constructor(
 
     private var maxValue by Delegates.notNull<Int>()
     private val safeField: RectF = RectF()
-    private var dataMap: Map<Date, Int> = mutableMapOf()
+    private var dataMap: MutableMap<Date, Int> = mutableMapOf()
+
+    private val animatorList: MutableList<ValueAnimator> = mutableListOf()
+
+    private val gestureDetector = GestureDetector(context,
+        object : GestureDetector.OnGestureListener{
+            override fun onDown(e: MotionEvent): Boolean {
+                return false
+            }
+
+            override fun onShowPress(e: MotionEvent) {
+            }
+
+            override fun onSingleTapUp(e: MotionEvent): Boolean {
+                return false
+            }
+
+            override fun onScroll(
+                e1: MotionEvent?,
+                e2: MotionEvent,
+                distanceX: Float,
+                distanceY: Float
+            ): Boolean {
+                return false
+            }
+
+            override fun onLongPress(e: MotionEvent) {
+                startMyAnimation()
+            }
+
+            override fun onFling(
+                e1: MotionEvent?,
+                e2: MotionEvent,
+                velocityX: Float,
+                velocityY: Float
+            ): Boolean {
+                return false
+            }
+        })
 
     init {
         if (attrs == null) initDefaultAttributes()
@@ -37,8 +78,34 @@ class BarChartsView @JvmOverloads constructor(
     }
 
     fun setData(map: Map<Date, Int>) {
-        if (map.size in 1..9) dataMap = map
-        invalidate()
+        if (map.size in 1..9) dataMap = map.toMutableMap()
+    }
+
+    fun startMyAnimation(){
+        dataMap.forEach {
+            val key = it.key
+            val animator = ValueAnimator.ofInt(0, it.value).apply {
+                duration = 1000
+                addUpdateListener {
+                    val value = this.getAnimatedValue().toString().toInt()
+                    dataMap[key] = value
+                    invalidate()
+                }
+            }
+            animator.start()
+            animatorList.add(animator)
+        }
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        return when {
+            gestureDetector.onTouchEvent(event) -> true
+            event.action == MotionEvent.ACTION_UP -> {
+                startMyAnimation()
+                true
+            }
+            else -> false
+        }
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -144,7 +211,6 @@ class BarChartsView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         //drawText(canvas)
-        canvas.drawRect(safeField, Paint().apply { color = Color.RED })
         drawBarCharts(canvas)
     }
 
@@ -210,9 +276,9 @@ class BarChartsView @JvmOverloads constructor(
             )
 
             val lineStart =
-                safeField.bottom - 2 * STANDARD_PADDING - dateBound.height() //нижняя точка столбца
+                safeField.bottom - 2 * EXTENDED_PADDING - dateBound.height() //нижняя точка линии
             val lineMaxEnd =
-                safeField.top + 2 * STANDARD_PADDING + percentBound.height() //конец для линии максимальной длины
+                safeField.top + 2 * EXTENDED_PADDING + percentBound.height() //конец для линии максимальной длины
             val lineHeight = lineStart - lineMaxEnd //длина максимальной линии
             val lineEnd = lineStart - lineHeight * percentValue //конец заданной линии
 
@@ -221,15 +287,15 @@ class BarChartsView @JvmOverloads constructor(
             canvas.drawLine(coordinateX, lineStart, coordinateX, lineEnd, barChartsPaint)
             canvas.drawText(
                 dateText,
-                coordinateX - dateBound.width() / 2,
+                coordinateX - dateBound.width() / 2f,
                 safeField.bottom - STANDARD_PADDING,
                 labelTextPaint
             )
 
             canvas.drawText(
                 percentValueString,
-                coordinateX - percentBound.width() / 2,
-                lineEnd - 2 * STANDARD_PADDING,
+                coordinateX - percentBound.width() / 2f,
+                lineEnd - EXTENDED_PADDING,
                 labelTextPaint
             )
             counter++
@@ -266,13 +332,15 @@ class BarChartsView @JvmOverloads constructor(
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
+        animatorList.forEach { it.cancel() }
     }
 
     companion object {
         val TEXT_AND_BARS_DEFAULT_COLOR = Color.rgb(252, 215, 95)
         const val STANDARD_TEXT_SIZE = 42
         const val STANDARD_LABEL_TEXT_SIZE = 28
-        const val STANDARD_PADDING = 5
+        const val STANDARD_PADDING = 10
+        const val EXTENDED_PADDING = 20
         const val STANDARD_MAX_VALUE = 100
         const val SCALE_WIDTH = 36
         const val SCALE_HEIGHT = 23
