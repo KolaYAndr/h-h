@@ -13,7 +13,9 @@ import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
 import com.example.lesson_5.R
+import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 import kotlin.math.min
 import kotlin.properties.Delegates
 
@@ -33,6 +35,7 @@ class BarChartsView @JvmOverloads constructor(
     private var maxValue by Delegates.notNull<Int>()
     private val safeField: RectF = RectF()
     private var dataMap: MutableMap<Date, Int> = mutableMapOf()
+    private val simpleDate = SimpleDateFormat("dd.MM", Locale.getDefault())
 
     private val animatorList: MutableList<ValueAnimator> = mutableListOf()
 
@@ -264,7 +267,7 @@ class BarChartsView @JvmOverloads constructor(
         val dateBound = Rect()
         val percentBound = Rect()
         dataMap.forEach { entry ->
-            val dateText = entry.key.date.toString() + "." + (entry.key.month + 1)
+            val dateText = simpleDate.format(entry.key)
             val percentValue = entry.value / maxValue.toFloat()
             labelTextPaint.getTextBounds(dateText, 0, dateText.length, dateBound)
             val percentValueString = (percentValue * maxValue).toInt().toString()
