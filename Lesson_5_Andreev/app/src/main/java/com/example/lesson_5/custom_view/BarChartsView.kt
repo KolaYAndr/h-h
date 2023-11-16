@@ -25,17 +25,17 @@ class BarChartsView @JvmOverloads constructor(
     defStyle: Int = 0
 ) :
     View(context, attrs, defStyle) {
-    var textColor by Delegates.notNull<Int>()
-    var textAndSubtitleTextSize by Delegates.notNull<Int>()
-    var labelTextSize by Delegates.notNull<Int>()
-    var barsColor by Delegates.notNull<Int>()
+    private var textColor by Delegates.notNull<Int>()
+    private var textAndSubtitleTextSize by Delegates.notNull<Int>()
+    private var labelTextSize by Delegates.notNull<Int>()
+    private var barsColor by Delegates.notNull<Int>()
     var text: String? = null
     var subtitleText: String? = null
-    var maxValue by Delegates.notNull<Int>()
-    var standardPadding by Delegates.notNull<Int>()
-    var extendedPadding by Delegates.notNull<Int>()
-    var scaleWidth by Delegates.notNull<Int>()
-    var scaleHeight by Delegates.notNull<Int>()
+    private var maxValue by Delegates.notNull<Int>()
+    private var standardPadding by Delegates.notNull<Int>()
+    private var extendedPadding by Delegates.notNull<Int>()
+    private var scaleWidth by Delegates.notNull<Int>()
+    private var scaleHeight by Delegates.notNull<Int>()
 
     private val safeField: RectF = RectF()
     private var dataMap: MutableMap<Date, Int> = mutableMapOf()
@@ -261,14 +261,14 @@ class BarChartsView @JvmOverloads constructor(
         textSize = labelTextSize.toFloat()
     }
 
+    private var counter = 1
+    private val dateBound = Rect()
+    private val percentBound = Rect()
+
     private fun drawBarCharts(canvas: Canvas, offset: Float) {
         val number = dataMap.size
         val step = safeField.width() / (number + 1)
 
-        var counter = 1
-
-        val dateBound = Rect()
-        val percentBound = Rect()
         dataMap.forEach { entry ->
             val dateText = simpleDate.format(entry.key)
             val percentValue = entry.value / maxValue.toFloat()
@@ -287,10 +287,10 @@ class BarChartsView @JvmOverloads constructor(
                 safeField.top + 2 * extendedPadding + percentBound.height() + offset //конец для линии максимальной длины
             val lineHeight = lineStart - lineMaxEnd //длина максимальной линии
             val lineEnd = lineStart - lineHeight * percentValue //конец заданной линии
-
             val coordinateX = safeField.left + step * counter
 
             canvas.drawLine(coordinateX, lineStart, coordinateX, lineEnd, barChartsPaint)
+
             canvas.drawText(
                 dateText,
                 coordinateX - dateBound.width() / 2f,
@@ -306,7 +306,7 @@ class BarChartsView @JvmOverloads constructor(
             )
             counter++
         }
-
+        counter = 1
     }
 
     private fun initSetAttributes(attrs: AttributeSet, defStyle: Int) {

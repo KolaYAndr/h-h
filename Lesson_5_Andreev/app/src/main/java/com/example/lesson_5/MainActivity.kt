@@ -12,7 +12,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         findViewById<BarChartsView>(R.id.bar_charts).setData(
             mapOf(
                 Pair(Calendar.getInstance().time, (0..100).random()),
