@@ -11,14 +11,11 @@
             android:id="@+id/bar_charts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            app:labelTextSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:subtitleText="Время указано в минутах"
-            app:text="Посещение по дням"
-            app:textSize="16sp" />
+            app:text="Посещение по дням" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

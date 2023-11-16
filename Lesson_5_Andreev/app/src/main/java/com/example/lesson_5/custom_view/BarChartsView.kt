@@ -3,7 +3,6 @@ package com.example.lesson_5.custom_view
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.RectF
@@ -12,6 +11,7 @@ import android.util.AttributeSet
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
+import androidx.core.content.ContextCompat
 import com.example.lesson_5.R
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -311,25 +311,38 @@ class BarChartsView @JvmOverloads constructor(
         text = typedArray.getString(R.styleable.BarChartsView_text)
         subtitleText = typedArray.getString(R.styleable.BarChartsView_subtitleText)
         textColor =
-            typedArray.getColor(R.styleable.BarChartsView_textColor, TEXT_AND_BARS_DEFAULT_COLOR)
+            typedArray.getColor(
+                R.styleable.BarChartsView_textColor,
+                ContextCompat.getColor(context, TEXT_AND_BARS_DEFAULT_COLOR)
+            )
         barsColor =
-            typedArray.getColor(R.styleable.BarChartsView_barsColor, TEXT_AND_BARS_DEFAULT_COLOR)
+            typedArray.getColor(
+                R.styleable.BarChartsView_barsColor,
+                ContextCompat.getColor(context, TEXT_AND_BARS_DEFAULT_COLOR)
+            )
         textAndSubtitleTextSize =
-            typedArray.getDimensionPixelSize(R.styleable.BarChartsView_textSize, 16)
-        maxValue = typedArray.getInt(R.styleable.BarChartsView_maxValue, STANDARD_MAX_VALUE)
+            typedArray.getDimensionPixelSize(
+                R.styleable.BarChartsView_textSize, resources.getDimensionPixelSize(
+                    STANDARD_TEXT_SIZE
+                )
+            )
+        maxValue = typedArray.getInt(
+            R.styleable.BarChartsView_maxValue,
+            resources.getInteger(STANDARD_MAX_VALUE)
+        )
         labelTextSize = typedArray.getDimensionPixelSize(
             R.styleable.BarChartsView_labelTextSize,
-            STANDARD_LABEL_TEXT_SIZE
+            resources.getDimensionPixelSize(STANDARD_LABEL_TEXT_SIZE)
         )
         typedArray.recycle()
     }
 
     private fun initDefaultAttributes() {
-        textColor = TEXT_AND_BARS_DEFAULT_COLOR
-        barsColor = TEXT_AND_BARS_DEFAULT_COLOR
-        textAndSubtitleTextSize = STANDARD_TEXT_SIZE
-        maxValue = STANDARD_MAX_VALUE
-        labelTextSize = STANDARD_LABEL_TEXT_SIZE
+        textColor = ContextCompat.getColor(context, TEXT_AND_BARS_DEFAULT_COLOR)
+        barsColor = ContextCompat.getColor(context, TEXT_AND_BARS_DEFAULT_COLOR)
+        textAndSubtitleTextSize = resources.getDimensionPixelSize(STANDARD_TEXT_SIZE)
+        maxValue = resources.getInteger(STANDARD_MAX_VALUE)
+        labelTextSize = resources.getDimensionPixelSize(STANDARD_LABEL_TEXT_SIZE)
     }
 
     override fun onDetachedFromWindow() {
@@ -338,12 +351,12 @@ class BarChartsView @JvmOverloads constructor(
     }
 
     companion object {
-        val TEXT_AND_BARS_DEFAULT_COLOR = Color.rgb(252, 215, 95)
-        const val STANDARD_TEXT_SIZE = 42
-        const val STANDARD_LABEL_TEXT_SIZE = 28
+        val TEXT_AND_BARS_DEFAULT_COLOR = R.color.text_and_bars_default_color
+        val STANDARD_TEXT_SIZE = R.dimen.standard_text_size
+        val STANDARD_LABEL_TEXT_SIZE = R.dimen.standard_label_text_size
         const val STANDARD_PADDING = 10
         const val EXTENDED_PADDING = 20
-        const val STANDARD_MAX_VALUE = 100
+        val STANDARD_MAX_VALUE = R.integer.standard_max_value
         const val SCALE_WIDTH = 36
         const val SCALE_HEIGHT = 23
     }
