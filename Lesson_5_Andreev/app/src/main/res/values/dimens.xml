@@ -4,4 +4,5 @@
     <dimen name="standard_label_text_size">12sp</dimen>
     <dimen name="standard_padding">5dp</dimen>
     <dimen name="extended_padding">10dp</dimen>
+    <dimen name="line_stroke_width">3dp</dimen>
 </resources>

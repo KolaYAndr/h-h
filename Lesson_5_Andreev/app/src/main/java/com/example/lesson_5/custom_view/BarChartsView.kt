@@ -36,6 +36,7 @@ class BarChartsView @JvmOverloads constructor(
     private var extendedPadding by Delegates.notNull<Int>()
     private var scaleWidth by Delegates.notNull<Int>()
     private var scaleHeight by Delegates.notNull<Int>()
+    private var lineStrokeWidth by Delegates.notNull<Int>()
 
     private val safeField: RectF = RectF()
     private var dataMap: MutableMap<Date, Int> = mutableMapOf()
@@ -82,6 +83,7 @@ class BarChartsView @JvmOverloads constructor(
     init {
         initPaddings()
         initScale()
+        initStrokeWidth()
         if (attrs == null) initDefaultAttributes()
         else initSetAttributes(attrs, defStyle)
     }
@@ -253,7 +255,7 @@ class BarChartsView @JvmOverloads constructor(
     val barChartsPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = barsColor
         style = Paint.Style.FILL
-        strokeWidth = 8f
+        strokeWidth = lineStrokeWidth.toFloat()
     }
     val labelTextPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = barsColor
@@ -341,6 +343,10 @@ class BarChartsView @JvmOverloads constructor(
         typedArray.recycle()
     }
 
+    private fun initStrokeWidth() {
+        lineStrokeWidth = resources.getDimensionPixelSize(LINE_STROKE_WIDTH)
+    }
+
     private fun initDefaultAttributes() {
         textColor = ContextCompat.getColor(context, TEXT_AND_BARS_DEFAULT_COLOR)
         barsColor = ContextCompat.getColor(context, TEXT_AND_BARS_DEFAULT_COLOR)
@@ -349,15 +355,16 @@ class BarChartsView @JvmOverloads constructor(
         labelTextSize = resources.getDimensionPixelSize(STANDARD_LABEL_TEXT_SIZE)
     }
 
-    private fun initPaddings(){
+    private fun initPaddings() {
         standardPadding = resources.getDimensionPixelSize(STANDARD_PADDING)
         extendedPadding = resources.getDimensionPixelSize(EXTENDED_PADDING)
     }
 
-    private fun initScale(){
+    private fun initScale() {
         scaleWidth = resources.getInteger(SCALE_WIDTH)
         scaleHeight = resources.getInteger(SCALE_HEIGHT)
     }
+
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
@@ -373,5 +380,6 @@ class BarChartsView @JvmOverloads constructor(
         val STANDARD_MAX_VALUE = R.integer.standard_max_value
         val SCALE_WIDTH = R.integer.scale_width
         val SCALE_HEIGHT = R.integer.scale_height
+        val LINE_STROKE_WIDTH = R.dimen.line_stroke_width
     }
 }
