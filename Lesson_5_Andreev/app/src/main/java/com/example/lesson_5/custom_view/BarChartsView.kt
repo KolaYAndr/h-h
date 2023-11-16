@@ -32,6 +32,10 @@ class BarChartsView @JvmOverloads constructor(
     var text: String? = null
     var subtitleText: String? = null
     var maxValue by Delegates.notNull<Int>()
+    var standardPadding by Delegates.notNull<Int>()
+    var extendedPadding by Delegates.notNull<Int>()
+    var scaleWidth by Delegates.notNull<Int>()
+    var scaleHeight by Delegates.notNull<Int>()
 
     private val safeField: RectF = RectF()
     private var dataMap: MutableMap<Date, Int> = mutableMapOf()
@@ -76,6 +80,8 @@ class BarChartsView @JvmOverloads constructor(
         })
 
     init {
+        initPaddings()
+        initScale()
         if (attrs == null) initDefaultAttributes()
         else initSetAttributes(attrs, defStyle)
     }
@@ -131,13 +137,13 @@ class BarChartsView @JvmOverloads constructor(
                     }
 
                     MeasureSpec.AT_MOST, MeasureSpec.UNSPECIFIED -> {
-                        val widthsRatio = widthFromMeasure / SCALE_WIDTH
-                        val heightsRatio = heightFromMeasure / SCALE_HEIGHT
+                        val widthsRatio = widthFromMeasure / scaleWidth
+                        val heightsRatio = heightFromMeasure / scaleHeight
 
                         val minOfRatios = min(widthsRatio, heightsRatio)
 
-                        resolvedWidth = SCALE_WIDTH * minOfRatios
-                        resolvedHeight = SCALE_HEIGHT * minOfRatios
+                        resolvedWidth = scaleWidth * minOfRatios
+                        resolvedHeight = scaleHeight * minOfRatios
                     }
                 }
             }
@@ -146,18 +152,18 @@ class BarChartsView @JvmOverloads constructor(
                 when (heightMode) {
                     MeasureSpec.EXACTLY -> {
                         resolvedHeight = heightFromMeasure
-                        val ratio = heightFromMeasure / SCALE_HEIGHT
-                        resolvedWidth = SCALE_WIDTH * ratio
+                        val ratio = heightFromMeasure / scaleHeight
+                        resolvedWidth = scaleWidth * ratio
                     }
 
                     MeasureSpec.AT_MOST, MeasureSpec.UNSPECIFIED -> {
-                        val widthsRatio = widthFromMeasure / SCALE_WIDTH
-                        val heightsRatio = heightFromMeasure / SCALE_HEIGHT
+                        val widthsRatio = widthFromMeasure / scaleWidth
+                        val heightsRatio = heightFromMeasure / scaleHeight
 
                         val minOfRatios = min(widthsRatio, heightsRatio)
 
-                        resolvedWidth = SCALE_WIDTH * minOfRatios
-                        resolvedHeight = SCALE_HEIGHT * minOfRatios
+                        resolvedWidth = scaleWidth * minOfRatios
+                        resolvedHeight = scaleHeight * minOfRatios
                     }
                 }
             }
@@ -166,18 +172,18 @@ class BarChartsView @JvmOverloads constructor(
                 when (heightMode) {
                     MeasureSpec.EXACTLY -> {
                         resolvedHeight = heightFromMeasure
-                        val ratio = heightFromMeasure / SCALE_HEIGHT
-                        resolvedWidth = SCALE_WIDTH * ratio
+                        val ratio = heightFromMeasure / scaleHeight
+                        resolvedWidth = scaleWidth * ratio
                     }
 
                     MeasureSpec.AT_MOST, MeasureSpec.UNSPECIFIED -> {
-                        val widthsRatio = widthFromMeasure / SCALE_WIDTH
-                        val heightsRatio = heightFromMeasure / SCALE_HEIGHT
+                        val widthsRatio = widthFromMeasure / scaleWidth
+                        val heightsRatio = heightFromMeasure / scaleHeight
 
                         val minOfRatios = min(widthsRatio, heightsRatio)
 
-                        resolvedWidth = SCALE_WIDTH * minOfRatios
-                        resolvedHeight = SCALE_HEIGHT * minOfRatios
+                        resolvedWidth = scaleWidth * minOfRatios
+                        resolvedHeight = scaleHeight * minOfRatios
                     }
                 }
             }
@@ -189,17 +195,17 @@ class BarChartsView @JvmOverloads constructor(
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         val safeWidth = w - paddingLeft - paddingRight
         val safeHeight = h - paddingTop - paddingBottom
-        val minRatio = min(safeWidth / SCALE_WIDTH, safeHeight / SCALE_HEIGHT)
+        val minRatio = min(safeWidth / scaleWidth, safeHeight / scaleHeight)
 
-        val heightDifference = h - SCALE_HEIGHT * minRatio
-        val widthDifference = w - SCALE_WIDTH * minRatio
+        val heightDifference = h - scaleHeight * minRatio
+        val widthDifference = w - scaleWidth * minRatio
 
         if (heightDifference != 0 && paddingTop == paddingBottom) {
             safeField.top = paddingTop + heightDifference / 2f
             safeField.bottom = h - paddingBottom - heightDifference / 2f
         } else {
             safeField.top = paddingTop.toFloat()
-            safeField.bottom = safeField.top + SCALE_HEIGHT * minRatio
+            safeField.bottom = safeField.top + scaleHeight * minRatio
         }
 
         if (widthDifference != 0 && paddingLeft == paddingRight) {
@@ -207,7 +213,7 @@ class BarChartsView @JvmOverloads constructor(
             safeField.right = w - paddingRight - widthDifference / 2f
         } else {
             safeField.left = paddingLeft.toFloat()
-            safeField.right = safeField.left + SCALE_WIDTH * minRatio
+            safeField.right = safeField.left + scaleWidth * minRatio
         }
     }
 
@@ -216,18 +222,17 @@ class BarChartsView @JvmOverloads constructor(
         drawBarCharts(canvas, offset)
     }
 
+    val textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = textColor
+        style = Paint.Style.FILL
+        textSize = textAndSubtitleTextSize.toFloat()
+    }
+
     private fun drawText(canvas: Canvas): Float {
-        var startVertical = safeField.top + STANDARD_PADDING
-        val startHorizontal = safeField.left + STANDARD_PADDING
+        var startVertical = safeField.top + standardPadding
+        val startHorizontal = safeField.left + standardPadding
 
-        val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-        textPaint.apply {
-            color = textColor
-            style = Paint.Style.FILL
-            textSize = textAndSubtitleTextSize.toFloat()
-            typeface = Typeface.DEFAULT_BOLD
-        }
-
+        textPaint.typeface = Typeface.DEFAULT_BOLD
         text?.let {
             val textBounds = Rect()
             textPaint.getTextBounds(it, 0, it.length, textBounds)
@@ -239,12 +244,11 @@ class BarChartsView @JvmOverloads constructor(
         subtitleText?.let {
             val textBounds = Rect()
             textPaint.getTextBounds(it, 0, it.length, textBounds)
-            startVertical += textBounds.height() + STANDARD_PADDING
+            startVertical += textBounds.height() + standardPadding
             canvas.drawText(it, startHorizontal, startVertical, textPaint)
         }
         return startVertical
     }
-
 
     val barChartsPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = barsColor
@@ -278,9 +282,9 @@ class BarChartsView @JvmOverloads constructor(
             )
 
             val lineStart =
-                safeField.bottom - 2 * EXTENDED_PADDING - dateBound.height() //нижняя точка линии
+                safeField.bottom - 2 * extendedPadding - dateBound.height() //нижняя точка линии
             val lineMaxEnd =
-                safeField.top + 2 * EXTENDED_PADDING + percentBound.height() + offset //конец для линии максимальной длины
+                safeField.top + 2 * extendedPadding + percentBound.height() + offset //конец для линии максимальной длины
             val lineHeight = lineStart - lineMaxEnd //длина максимальной линии
             val lineEnd = lineStart - lineHeight * percentValue //конец заданной линии
 
@@ -290,14 +294,14 @@ class BarChartsView @JvmOverloads constructor(
             canvas.drawText(
                 dateText,
                 coordinateX - dateBound.width() / 2f,
-                safeField.bottom - STANDARD_PADDING,
+                safeField.bottom - standardPadding,
                 labelTextPaint
             )
 
             canvas.drawText(
                 percentValueString,
                 coordinateX - percentBound.width() / 2f,
-                lineEnd - EXTENDED_PADDING,
+                lineEnd - extendedPadding,
                 labelTextPaint
             )
             counter++
@@ -345,6 +349,16 @@ class BarChartsView @JvmOverloads constructor(
         labelTextSize = resources.getDimensionPixelSize(STANDARD_LABEL_TEXT_SIZE)
     }
 
+    private fun initPaddings(){
+        standardPadding = resources.getDimensionPixelSize(STANDARD_PADDING)
+        extendedPadding = resources.getDimensionPixelSize(EXTENDED_PADDING)
+    }
+
+    private fun initScale(){
+        scaleWidth = resources.getInteger(SCALE_WIDTH)
+        scaleHeight = resources.getInteger(SCALE_HEIGHT)
+    }
+
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
         animatorList.forEach { it.cancel() }
@@ -354,10 +368,10 @@ class BarChartsView @JvmOverloads constructor(
         val TEXT_AND_BARS_DEFAULT_COLOR = R.color.text_and_bars_default_color
         val STANDARD_TEXT_SIZE = R.dimen.standard_text_size
         val STANDARD_LABEL_TEXT_SIZE = R.dimen.standard_label_text_size
-        const val STANDARD_PADDING = 10
-        const val EXTENDED_PADDING = 20
+        val STANDARD_PADDING = R.dimen.standard_padding
+        val EXTENDED_PADDING = R.dimen.extended_padding
         val STANDARD_MAX_VALUE = R.integer.standard_max_value
-        const val SCALE_WIDTH = 36
-        const val SCALE_HEIGHT = 23
+        val SCALE_WIDTH = R.integer.scale_width
+        val SCALE_HEIGHT = R.integer.scale_height
     }
 }
