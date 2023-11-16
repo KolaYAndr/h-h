@@ -25,14 +25,14 @@ class BarChartsView @JvmOverloads constructor(
     defStyle: Int = 0
 ) :
     View(context, attrs, defStyle) {
-    private var textColor by Delegates.notNull<Int>()
-    private var textAndSubtitleTextSize by Delegates.notNull<Int>()
-    private var labelTextSize by Delegates.notNull<Int>()
-    private var barsColor by Delegates.notNull<Int>()
-    private var text: String? = null
-    private var subtitleText: String? = null
+    var textColor by Delegates.notNull<Int>()
+    var textAndSubtitleTextSize by Delegates.notNull<Int>()
+    var labelTextSize by Delegates.notNull<Int>()
+    var barsColor by Delegates.notNull<Int>()
+    var text: String? = null
+    var subtitleText: String? = null
+    var maxValue by Delegates.notNull<Int>()
 
-    private var maxValue by Delegates.notNull<Int>()
     private val safeField: RectF = RectF()
     private var dataMap: MutableMap<Date, Int> = mutableMapOf()
     private val simpleDate = SimpleDateFormat("dd.MM", Locale.getDefault())
@@ -40,7 +40,7 @@ class BarChartsView @JvmOverloads constructor(
     private val animatorList: MutableList<ValueAnimator> = mutableListOf()
 
     private val gestureDetector = GestureDetector(context,
-        object : GestureDetector.OnGestureListener{
+        object : GestureDetector.OnGestureListener {
             override fun onDown(e: MotionEvent): Boolean {
                 return false
             }
@@ -84,7 +84,7 @@ class BarChartsView @JvmOverloads constructor(
         if (map.size in 1..9) dataMap = map.toMutableMap()
     }
 
-    fun startMyAnimation(){
+    fun startMyAnimation() {
         dataMap.forEach {
             val key = it.key
             val animator = ValueAnimator.ofInt(0, it.value).apply {
@@ -107,6 +107,7 @@ class BarChartsView @JvmOverloads constructor(
                 startMyAnimation()
                 true
             }
+
             else -> false
         }
     }
@@ -193,31 +194,29 @@ class BarChartsView @JvmOverloads constructor(
         val heightDifference = h - SCALE_HEIGHT * minRatio
         val widthDifference = w - SCALE_WIDTH * minRatio
 
-        if (heightDifference != 0 && paddingTop == paddingBottom){
+        if (heightDifference != 0 && paddingTop == paddingBottom) {
             safeField.top = paddingTop + heightDifference / 2f
             safeField.bottom = h - paddingBottom - heightDifference / 2f
-        }
-        else {
+        } else {
             safeField.top = paddingTop.toFloat()
             safeField.bottom = safeField.top + SCALE_HEIGHT * minRatio
         }
 
-        if (widthDifference != 0 && paddingLeft == paddingRight){
+        if (widthDifference != 0 && paddingLeft == paddingRight) {
             safeField.left = paddingLeft + widthDifference / 2f
             safeField.right = w - paddingRight - widthDifference / 2f
-        }
-        else {
+        } else {
             safeField.left = paddingLeft.toFloat()
             safeField.right = safeField.left + SCALE_WIDTH * minRatio
         }
     }
 
     override fun onDraw(canvas: Canvas) {
-        //drawText(canvas)
-        drawBarCharts(canvas)
+        val offset = drawText(canvas)
+        drawBarCharts(canvas, offset)
     }
 
-    private fun drawText(canvas: Canvas) {
+    private fun drawText(canvas: Canvas): Float {
         var startVertical = safeField.top + STANDARD_PADDING
         val startHorizontal = safeField.left + STANDARD_PADDING
 
@@ -243,22 +242,22 @@ class BarChartsView @JvmOverloads constructor(
             startVertical += textBounds.height() + STANDARD_PADDING
             canvas.drawText(it, startHorizontal, startVertical, textPaint)
         }
+        return startVertical
     }
 
-    private fun drawBarCharts(canvas: Canvas) {
-        val barChartsPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-        barChartsPaint.apply {
-            color = barsColor
-            style = Paint.Style.FILL
-            strokeWidth = 8f
-        }
-        val labelTextPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-        labelTextPaint.apply {
-            color = barsColor
-            style = Paint.Style.FILL_AND_STROKE
-            textSize = labelTextSize.toFloat()
-        }
 
+    val barChartsPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = barsColor
+        style = Paint.Style.FILL
+        strokeWidth = 8f
+    }
+    val labelTextPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = barsColor
+        style = Paint.Style.FILL_AND_STROKE
+        textSize = labelTextSize.toFloat()
+    }
+
+    private fun drawBarCharts(canvas: Canvas, offset: Float) {
         val number = dataMap.size
         val step = safeField.width() / (number + 1)
 
@@ -281,7 +280,7 @@ class BarChartsView @JvmOverloads constructor(
             val lineStart =
                 safeField.bottom - 2 * EXTENDED_PADDING - dateBound.height() //нижняя точка линии
             val lineMaxEnd =
-                safeField.top + 2 * EXTENDED_PADDING + percentBound.height() //конец для линии максимальной длины
+                safeField.top + 2 * EXTENDED_PADDING + percentBound.height() + offset //конец для линии максимальной длины
             val lineHeight = lineStart - lineMaxEnd //длина максимальной линии
             val lineEnd = lineStart - lineHeight * percentValue //конец заданной линии
 

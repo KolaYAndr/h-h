@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="default_max_value">100</integer>
+    <integer name="scale_width">36</integer>
+    <integer name="scale_height">23</integer>
+</resources>
