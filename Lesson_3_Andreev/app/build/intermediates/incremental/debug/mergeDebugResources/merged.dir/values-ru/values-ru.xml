@@ -113,9 +113,9 @@
     <string msgid="6264217191555673260" name="search_menu_title">"Поиск"</string>
     <string name="sign_in">Войти</string>
     <string name="sign_in_action">@string/sign_in</string>
-    <string name="sign_in_login_error">Не соответсвует почтовому адресу</string>
+    <string name="sign_in_login_error">Поле заполнено неверно</string>
     <string name="sign_in_login_hint">Логин</string>
-    <string name="sign_in_password_error">Пароль введён неправильно</string>
+    <string name="sign_in_password_error">Поле заполнено неверно</string>
     <string name="sign_in_password_hint">Пароль</string>
     <string name="sign_in_title">@string/sign_in</string>
     <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">">999"</string>

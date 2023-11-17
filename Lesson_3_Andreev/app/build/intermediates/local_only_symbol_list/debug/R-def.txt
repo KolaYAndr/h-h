@@ -5,6 +5,7 @@ color black_20pc
 color seashell
 color silver_chalice
 color smalt
+color text_field_box_stroke_color
 color text_field_error
 color white
 color white_50pc
@@ -20,13 +21,16 @@ dimen text_field_hint_size
 dimen text_field_input_size
 dimen text_h1_line
 dimen text_h1_size
+drawable ic_launcher_background
 drawable ic_launcher_foreground
+id action_signInFragment_to_catalogFragment
+id catalogFragment
 id editTextLogin
 id editTextPassword
+id fragment_container
 id layoutLogin
 id layoutPassword
 id nav_graph
-id nav_host_fragment
 id signInButton
 id signInFragment
 id textTitle
@@ -37,6 +41,7 @@ mipmap ic_launcher
 mipmap ic_launcher_round
 navigation nav_graph
 string app_name
+string hello_blank_fragment
 string sign_in
 string sign_in_action
 string sign_in_login_error
@@ -44,6 +49,7 @@ string sign_in_login_hint
 string sign_in_password_error
 string sign_in_password_hint
 string sign_in_title
+style Base.Theme.Lesson_5
 style Base.Theme.MyApplication
 style TextAppearance
 style TextAppearance.Button
@@ -56,3 +62,5 @@ style Theme.HnHApp.Button
 style Theme.HnHApp.ShapeAppearanceButton
 style Theme.HnHApp.ShapeAppearanceTextInputLayout
 style Theme.HnHApp.TextInputLayout
+xml backup_rules
+xml data_extraction_rules
