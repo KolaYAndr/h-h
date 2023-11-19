@@ -56,6 +56,22 @@ class SignInFragment : Fragment() {
         setPasswordDoOnTextChange()
         setLoginDoOnTextChange()
 
+        setSignInViewModelObserver(view)
+
+        binding.editTextPassword.setOnKeyListener { _, keyCode, event ->
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == EditorInfo.IME_ACTION_DONE) {
+                tryLoggingIn()
+                return@setOnKeyListener true
+            }
+            return@setOnKeyListener false
+        }
+
+        binding.loadableButton.clickButton {
+            tryLoggingIn()
+        }
+    }
+
+    private fun setSignInViewModelObserver(view: View){
         signInViewModel.loginLiveData.observe(viewLifecycleOwner) { value ->
             when (value) {
                 is ResponseStates.Loading -> {
@@ -83,18 +99,6 @@ class SignInFragment : Fragment() {
                     ).show()
                 }
             }
-        }
-
-        binding.editTextPassword.setOnKeyListener { _, keyCode, event ->
-            if (event.action == KeyEvent.ACTION_DOWN && keyCode == EditorInfo.IME_ACTION_DONE) {
-                tryLoggingIn()
-                return@setOnKeyListener true
-            }
-            return@setOnKeyListener false
-        }
-
-        binding.loadableButton.clickButton {
-            tryLoggingIn()
         }
     }
 

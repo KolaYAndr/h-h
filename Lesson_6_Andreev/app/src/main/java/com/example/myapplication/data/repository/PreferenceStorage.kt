@@ -21,7 +21,6 @@ class PreferenceStorage @Inject constructor(
 
     companion object {
         const val PREF_FILE_NAME = "pref_file"
-
         private const val PREF_USER_TOKEN = "pref_user_token"
     }
 }
