@@ -85,8 +85,6 @@ class SignInFragment : Fragment() {
             }
         }
 
-
-
         binding.editTextPassword.setOnKeyListener { _, keyCode, event ->
             if (event.action == KeyEvent.ACTION_DOWN && keyCode == EditorInfo.IME_ACTION_DONE) {
                 tryLoggingIn()
@@ -95,7 +93,7 @@ class SignInFragment : Fragment() {
             return@setOnKeyListener false
         }
 
-        binding.loadableButton.signInButton.setOnClickListener {
+        binding.loadableButton.clickButton {
             tryLoggingIn()
         }
     }

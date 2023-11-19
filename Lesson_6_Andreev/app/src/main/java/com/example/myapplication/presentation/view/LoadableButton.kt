@@ -18,14 +18,21 @@ class LoadableButton @JvmOverloads constructor(
         )
     }
 
+    fun clickButton(listener: () -> Unit) {
+        binding!!.signInButton.setOnClickListener{listener()}
+    }
+
     fun setStateLoading() = binding?.run {
-        this.signInButton.text = ""
-        this.progressBar.visibility = VISIBLE
+        signInButton.text = ""
+        progressBar.visibility = VISIBLE
+        signInButton.isEnabled = false
+
     }
 
     fun setStateData() = binding?.run {
-        this.signInButton.text = resources.getString(R.string.sign_in_action)
-        this.progressBar.visibility = GONE
+        signInButton.text = resources.getString(R.string.sign_in_action)
+        progressBar.visibility = GONE
+        signInButton.isEnabled = true
     }
 
     override fun onDetachedFromWindow() {

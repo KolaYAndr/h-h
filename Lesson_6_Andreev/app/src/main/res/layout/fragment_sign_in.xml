@@ -51,9 +51,8 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <include
+    <com.example.myapplication.presentation.view.LoadableButton
         android:id="@+id/loadableButton"
-        layout="@layout/loadable_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/normal_100"
