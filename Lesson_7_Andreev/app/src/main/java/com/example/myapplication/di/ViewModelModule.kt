@@ -21,6 +21,6 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(SignInViewModel::class)
+    @ViewModelKey(CatalogViewModel::class)
     abstract fun catalogViewModel(catalogViewModel: CatalogViewModel): ViewModel
 }
