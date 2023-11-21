@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
     android:paddingVertical="@dimen/normal_100">
 
     <ImageView
@@ -35,10 +36,10 @@
         style="@style/Theme.HnHApp.ItemDescription"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/purchaseItem"
         app:layout_constraintEnd_toEndOf="@id/itemName"
         app:layout_constraintStart_toStartOf="@id/itemName"
         app:layout_constraintTop_toBottomOf="@id/itemName"
-        app:layout_constraintBottom_toTopOf="@id/purchaseItem"
         tools:text="Джерси" />
 
     <TextView
@@ -56,6 +57,8 @@
         style="@style/Theme.HnhApp.ItemPurchase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
         android:gravity="center"
         android:paddingHorizontal="@dimen/item_purchase_padding_horizontal"
         android:paddingVertical="@dimen/item_purchase_padding_vertical"

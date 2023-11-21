@@ -51,8 +51,12 @@ class CatalogFragment : Fragment() {
 
         catalogViewModel.getProducts()
 
+        binding.refreshButton.setOnClickListener {
+            catalogViewModel.getProducts()
+        }
+
         catalogAdapter.setOnItemClickListener {
-            //TODO
+            //TODO("Переход на следующий элемент")
         }
     }
 
