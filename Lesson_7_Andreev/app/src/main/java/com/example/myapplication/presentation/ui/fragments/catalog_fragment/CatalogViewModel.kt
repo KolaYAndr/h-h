@@ -27,6 +27,4 @@ class CatalogViewModel @Inject constructor(private val productUseCase: ProductUs
             }
         }
     }
-
-
 }

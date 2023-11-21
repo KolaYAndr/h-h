@@ -39,7 +39,6 @@
     <style name="Theme.HnHApp.Catalog.ErrorScreen.Detailed" parent="TextAppearance">
         <item name="android:textSize">@dimen/catalog_error_detailed_text_size</item>
         <item name="android:textColor">@color/silver_chalice</item>
-        <item name="android:lineSpacingExtra">@dimen/catalog_error_detailed_text_line</item>
     </style>
 
     <style name="Theme.HnHApp.Catalog.ToolbarText" parent="TextAppearance">

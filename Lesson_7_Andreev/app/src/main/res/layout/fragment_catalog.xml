@@ -64,6 +64,7 @@
                 android:layout_marginHorizontal="@dimen/normal_200"
                 android:layout_marginTop="@dimen/normal_50"
                 android:gravity="center"
+                android:maxLines="1"
                 tools:text="Детальный текст ошибки, занимающий несколько строк" />
 
             <com.google.android.material.button.MaterialButton
