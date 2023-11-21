@@ -7,6 +7,7 @@ import com.example.myapplication.data.responcemodel.ResponseLogin
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PUT
+import retrofit2.http.Query
 
 interface ApiLesson {
     @PUT("user/signin")
@@ -15,5 +16,7 @@ interface ApiLesson {
     ): BaseResponse<ResponseLogin>
 
     @GET("products")
-    suspend fun getProducts() : BaseResponse<List<Product>>
+    suspend fun getProducts(
+        @Query("pageSize") pageSize: Int
+    ): BaseResponse<List<Product>>
 }

@@ -7,7 +7,7 @@ import javax.inject.Inject
 class ProductUseCase @Inject constructor(
     private val repository: AccessRepository,
 ) {
-    suspend fun getProducts() : List<Product> {
-        return repository.getProducts()
+    suspend fun getProducts(pageSize: Int) : List<Product> {
+        return repository.getProducts(pageSize)
     }
 }

@@ -13,7 +13,7 @@ class AccessRepository @Inject constructor(
         return apiLesson.login(RequestLogin(email, password)).data
     }
 
-    suspend fun getProducts() : List<Product>{
-        return apiLesson.getProducts().data
+    suspend fun getProducts(pageSize: Int) : List<Product>{
+        return apiLesson.getProducts(pageSize).data
     }
 }

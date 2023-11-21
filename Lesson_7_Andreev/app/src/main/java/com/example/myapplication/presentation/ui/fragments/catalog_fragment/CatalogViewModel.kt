@@ -3,6 +3,7 @@ package com.example.myapplication.presentation.ui.fragments.catalog_fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.myapplication.R
 import com.example.myapplication.data.product.Product
 import com.example.myapplication.data.responcemodel.ResponseStates
 import com.example.myapplication.domen.usecase.ProductUseCase
@@ -19,12 +20,16 @@ class CatalogViewModel @Inject constructor(private val productUseCase: ProductUs
 
             try {
                 _productLiveData.value = ResponseStates.Success(
-                    productUseCase.getProducts()
+                    productUseCase.getProducts(USUAL_REQUEST_PRODUCT_SIZE)
                 )
             }
             catch (e: Exception){
                 _productLiveData.value = ResponseStates.Failure(e)
             }
         }
+    }
+
+    companion object {
+        val USUAL_REQUEST_PRODUCT_SIZE = R.integer.default_request_product_size
     }
 }
