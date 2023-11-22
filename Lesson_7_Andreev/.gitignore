@@ -12,7 +12,4 @@
 /captures
 .externalNativeBuild
 .cxx
-local.properties
-.idea
-.idea/
-/app/build/
+/.idea/
