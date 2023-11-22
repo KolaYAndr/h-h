@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:paddingVertical="@dimen/normal_100">
+
+    <ImageView
+        android:id="@+id/itemImage"
+        android:layout_width="@dimen/item_image_view_size"
+        android:layout_height="@dimen/item_image_view_size"
+        android:layout_marginVertical="@dimen/normal_100"
+        android:layout_marginStart="@dimen/normal_100"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/itemName"
+        style="@style/Theme.HnHApp.ItemName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/normal_100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/itemImage"
+        app:layout_constraintTop_toTopOf="@id/itemImage"
+        tools:text="Nike Tampa Bay Buccaneers Super Bowl LV" />
+
+    <TextView
+        android:id="@+id/itemDescription"
+        style="@style/Theme.HnHApp.ItemDescription"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/purchaseItem"
+        app:layout_constraintEnd_toEndOf="@id/itemName"
+        app:layout_constraintStart_toStartOf="@id/itemName"
+        app:layout_constraintTop_toBottomOf="@id/itemName"
+        tools:text="Джерси" />
+
+    <TextView
+        android:id="@+id/itemPrice"
+        style="@style/Theme.HnHApp.ItemPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/item_price_margin_bottom"
+        app:layout_constraintBottom_toBottomOf="@id/itemImage"
+        app:layout_constraintStart_toStartOf="@id/itemName"
+        tools:text="9 000 ₽" />
+
+    <TextView
+        android:id="@+id/purchaseItem"
+        style="@style/Theme.HnhApp.ItemPurchase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/item_purchase_padding_horizontal"
+        android:paddingVertical="@dimen/item_purchase_padding_vertical"
+        android:text="@string/purchase_action"
+        app:drawableStartCompat="@drawable/ic_shopping_cart"
+        app:layout_constraintBottom_toBottomOf="@id/itemPrice"
+        app:layout_constraintEnd_toEndOf="@id/itemName" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
