@@ -1,0 +1,22 @@
+{
+  "mappings": {
+    "activity_main": {
+      "qualified_name": "com.example.myapplication.databinding.ActivityMainBinding",
+      "module_package": "com.example.myapplication.databinding",
+      "variables": {},
+      "implementations": []
+    },
+    "fragment_catalog": {
+      "qualified_name": "com.example.myapplication.databinding.FragmentCatalogBinding",
+      "module_package": "com.example.myapplication.databinding",
+      "variables": {},
+      "implementations": []
+    },
+    "fragment_sign_in": {
+      "qualified_name": "com.example.myapplication.databinding.FragmentSignInBinding",
+      "module_package": "com.example.myapplication.databinding",
+      "variables": {},
+      "implementations": []
+    }
+  }
+}
