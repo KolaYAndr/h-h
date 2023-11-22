@@ -68,7 +68,7 @@ class DetailFragment : Fragment() {
                 }
 
                 is ResponseStates.Failure -> {
-                    binding.detailUnexpectedErrorDetailed.text = value.e.getError()
+                    //binding.detailUnexpectedErrorDetailed.text = value.e.getError()
                     binding.detailViewFlipper.displayedChild = 1
                 }
 

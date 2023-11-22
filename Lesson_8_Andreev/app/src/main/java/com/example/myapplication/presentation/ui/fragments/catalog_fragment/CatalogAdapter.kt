@@ -26,7 +26,7 @@ class CatalogAdapter : RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder>() 
     val differ = AsyncListDiffer(this, callback)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatalogViewHolder {
         return CatalogViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_view, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_product_view, parent, false)
         )
     }
 
@@ -35,21 +35,21 @@ class CatalogAdapter : RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder>() 
     }
 
     override fun onBindViewHolder(holder: CatalogViewHolder, position: Int) {
-        val item = differ.currentList[position]
+        val product = differ.currentList[position]
 
-        val itemImage = holder.itemView.findViewById<ImageView>(R.id.itemImage)
-        val itemName = holder.itemView.findViewById<TextView>(R.id.itemName)
-        val itemDescription = holder.itemView.findViewById<TextView>(R.id.itemDescription)
-        val itemPrice = holder.itemView.findViewById<TextView>(R.id.itemPrice)
+        val productImage = holder.itemView.findViewById<ImageView>(R.id.productImage)
+        val productName = holder.itemView.findViewById<TextView>(R.id.productName)
+        val productDepartment = holder.itemView.findViewById<TextView>(R.id.productDepartment)
+        val productPrice = holder.itemView.findViewById<TextView>(R.id.productPrice)
 
         holder.itemView.apply {
-            Glide.with(this).load(item.images[0]).into(itemImage)
-            itemName.text = item.title
-            itemDescription.text = item.description.slice(13..<item.description.length)
-            itemPrice.text = item.price.toString() + " ₽"
+            Glide.with(this).load(product.images[0]).into(productImage)
+            productName.text = product.title
+            productDepartment.text = product.department
+            productPrice.text = String.format("%s ₽", product.price);
 
             setOnClickListener {
-                onItemClickListener?.let { it(item) }
+                onItemClickListener?.let { it(product) }
             }
         }
     }

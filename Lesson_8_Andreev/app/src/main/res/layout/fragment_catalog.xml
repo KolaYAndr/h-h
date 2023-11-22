@@ -81,6 +81,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/catalog_recycler_view_shape"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_view"/>
+            tools:listitem="@layout/item_product_view"/>
     </ViewFlipper>
 </LinearLayout>

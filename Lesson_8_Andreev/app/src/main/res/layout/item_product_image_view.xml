@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/detail_product_image_selector"
+    android:focusable="true">
+
+    <ImageView
+        android:id="@+id/itemProductImage"
+        android:layout_width="@dimen/item_product_image_size"
+        android:layout_height="@dimen/item_product_image_size"
+        android:padding="@dimen/item_image_padding" />
+
+
+</FrameLayout>

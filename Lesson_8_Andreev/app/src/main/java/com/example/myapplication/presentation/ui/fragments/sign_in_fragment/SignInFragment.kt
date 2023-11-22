@@ -120,7 +120,6 @@ class SignInFragment : Fragment() {
 
     private fun goToCatalogScreen() {
         val navController = findNavController()
-        navController.popBackStack(R.id.signInFragment, false)
         navController.navigate(SignInFragmentDirections.actionSignInFragmentToCatalogFragment())
     }
 

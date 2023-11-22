@@ -1,6 +1,5 @@
 package com.example.myapplication.presentation.ui.fragments.detail_fragment
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,11 +19,9 @@ class DetailViewModel @Inject constructor(private val productUseCase: ProductUse
             _productLiveData.value = ResponseStates.Loading()
 
             try {
-                val product = productUseCase.getProduct(id)
                 _productLiveData.value = ResponseStates.Success(
-                    product
+                    productUseCase.getProduct(id)
                 )
-                Log.d("product", product.toString())
             }
             catch (e: Exception){
                 _productLiveData.value = ResponseStates.Failure(e)
