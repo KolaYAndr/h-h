@@ -91,7 +91,7 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="Theme.HnHApp.ItemDescription" parent="TextAppearance">
+    <style name="Theme.HnHApp.ItemDepartment" parent="TextAppearance">
         <item name="android:textSize">@dimen/item_description_text_size</item>
         <item name="android:textColor">@color/silver_chalice</item>
         <item name="android:lineSpacingExtra">@dimen/item_description_text_line</item>

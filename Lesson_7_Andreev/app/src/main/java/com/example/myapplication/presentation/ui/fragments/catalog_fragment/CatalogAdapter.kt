@@ -39,14 +39,14 @@ class CatalogAdapter : RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder>() 
 
         val itemImage = holder.itemView.findViewById<ImageView>(R.id.itemImage)
         val itemName = holder.itemView.findViewById<TextView>(R.id.itemName)
-        val itemDescription = holder.itemView.findViewById<TextView>(R.id.itemDescription)
+        val itemDepartment = holder.itemView.findViewById<TextView>(R.id.itemDepartment)
         val itemPrice = holder.itemView.findViewById<TextView>(R.id.itemPrice)
 
         holder.itemView.apply {
             Glide.with(this).load(item.images[0]).into(itemImage)
             itemName.text = item.title
-            itemDescription.text = item.description.slice(13..<item.description.length)
-            itemPrice.text = item.price.toString() + " ₽"
+            itemDepartment.text = item.department
+            itemPrice.text = StringBuilder(item.price).append(" ₽")
 
             setOnItemClickListener {
                 onItemClickListener?.let { it(item) }
