@@ -9,8 +9,6 @@
     </style>
 
     <style name="TextAppearance.Button" parent="TextAppearance">
-        <item name="android:textSize">@dimen/text_button_size</item>
-        <item name="android:lineSpacingExtra">@dimen/text_button_line</item>
         <item name="textAllCaps">true</item>
     </style>
 
@@ -31,9 +29,18 @@
         <item name="cornerSize">@dimen/corner_round</item>
     </style>
 
-    <style name="Theme.HnHApp.Button" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+    <style name="Theme.HnHApp.LoadableButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="shapeAppearance">@style/Theme.HnHApp.ShapeAppearanceButton</item>
         <item name="android:textAppearance">@style/TextAppearance.Button</item>
+        <item name="android:textSize">@dimen/text_loading_button_size</item>
+        <item name="android:lineSpacingExtra">@dimen/text_loading_button_line</item>
+    </style>
+
+    <style name="Theme.HnHApp.RefreshButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="shapeAppearance">@style/Theme.HnHApp.ShapeAppearanceButton</item>
+        <item name="android:textAppearance">@style/TextAppearance.Button</item>
+        <item name="android:textSize">@dimen/text_refresh_button_size</item>
+        <item name="android:lineSpacingExtra">@dimen/text_refresh_button_line</item>
     </style>
 
     <style name="Theme.HnHApp.ShapeAppearanceTextInputLayout" parent="">

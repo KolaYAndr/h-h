@@ -71,7 +71,12 @@ class SignInFragment : Fragment() {
         }
     }
 
-    private fun setSignInViewModelObserver(view: View){
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun setSignInViewModelObserver(view: View) {
         signInViewModel.loginLiveData.observe(viewLifecycleOwner) { value ->
             when (value) {
                 is ResponseStates.Loading -> {

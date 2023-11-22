@@ -29,7 +29,8 @@
             android:id="@+id/editTextLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:text="me@coldmail.org"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -47,7 +48,8 @@
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:text="passWORD123?"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
