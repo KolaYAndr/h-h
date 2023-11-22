@@ -5,7 +5,7 @@ import com.example.myapplication.data.requestmodel.RequestLogin
 import com.example.myapplication.data.responcemodel.ResponseLogin
 import javax.inject.Inject
 
-class LoginRepository @Inject constructor(
+class AccessRepository @Inject constructor(
     private val apiLesson: ApiLesson,
 ) {
     suspend fun login(email: String, password: String): ResponseLogin {

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_background"
+    android:orientation="vertical"
+    tools:context=".presentation.ui.fragments.catalog_fragment.CatalogFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/catalogToolbar"
+        style="@style/Theme.HnHApp.Catalog.Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/toolbar_menu">
+
+        <TextView
+            style="@style/Theme.HnHApp.Catalog.ToolbarText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/catalog" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <ViewFlipper
+        android:id="@+id/catalogViewFlipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/catalogProgressBar"
+            style="@style/Theme.HnHApp.CatalogProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:id="@+id/catalogErrorScreen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/catalog_error_image_size"
+                android:layout_height="@dimen/catalog_error_image_size"
+                android:src="@drawable/star_error_image" />
+
+            <TextView
+                android:id="@+id/unexpectedErrorText"
+                style="@style/Theme.HnHApp.Catalog.ErrorScreen.Unexpected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/normal_200"
+                android:layout_marginTop="@dimen/normal_150"
+                android:text="@string/unexpected_error" />
+
+            <TextView
+                android:id="@+id/unexpectedErrorDetailed"
+                style="@style/Theme.HnHApp.Catalog.ErrorScreen.Detailed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/normal_200"
+                android:layout_marginTop="@dimen/normal_50"
+                android:gravity="center"
+                android:maxLines="1"
+                tools:text="Детальный текст ошибки, занимающий несколько строк" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/refreshButton"
+                style="@style/Theme.HnHApp.RefreshButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/refresh" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/catalogRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/catalog_recycler_view_shape"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_view"/>
+    </ViewFlipper>
+</LinearLayout>
