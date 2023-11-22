@@ -10,4 +10,8 @@ class ProductUseCase @Inject constructor(
     suspend fun getProducts(pageSize: Int) : List<Product> {
         return repository.getProducts(pageSize)
     }
+
+    suspend fun getProduct(id: String) : Product{
+        return repository.getProduct(id)
+    }
 }

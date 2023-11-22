@@ -85,20 +85,20 @@
         <item name="errorTextColor">@color/text_field_error</item>
     </style>
 
-    <style name="Theme.HnHApp.ItemName" parent="TextAppearance">
+    <style name="Theme.HnHApp.Item.Name" parent="TextAppearance">
         <item name="android:textSize">@dimen/item_name_text_size</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="Theme.HnHApp.ItemDescription" parent="TextAppearance">
+    <style name="Theme.HnHApp.Item.Description" parent="TextAppearance">
         <item name="android:textSize">@dimen/item_description_text_size</item>
         <item name="android:textColor">@color/silver_chalice</item>
         <item name="android:lineSpacingExtra">@dimen/item_description_text_line</item>
         <item name="maxLines">@integer/item_description_max_lines</item>
     </style>
 
-    <style name="Theme.HnHApp.ItemPrice" parent="TextAppearance">
+    <style name="Theme.HnHApp.Item.Price" parent="TextAppearance">
         <item name="android:textSize">@dimen/item_price_text_size</item>
         <item name="android:textStyle">bold</item>
         <item name="android:lineSpacingExtra">@dimen/item_price_text_line</item>
@@ -114,7 +114,24 @@
         <item name="background">?attr/selectableItemBackground</item>
     </style>
 
-    <style name="Theme.HnHApp.CatalogProgressBar" parent="Widget.AppCompat.ProgressBar">
+    <style name="Theme.HnHApp.Catalog.ProgressBar" parent="Widget.AppCompat.ProgressBar">
         <item name="android:indeterminateTint">@color/smalt</item>
+    </style>
+
+    <style name="Theme.HnHApp.Detail.ProgressBar" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateTint">@color/smalt</item>
+    </style>
+
+
+    <style name="Theme.HnHApp.Detail.ErrorScreen.Unexpected" parent="TextAppearance">
+        <item name="android:textSize">@dimen/detail_error_unexpected_text_size</item>
+        <item name="android:textColor">@color/silver_chalice</item>
+        <item name="android:lineSpacingExtra">@dimen/detail_error_unexpected_text_line</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Theme.HnHApp.Detail.ErrorScreen.Detailed" parent="TextAppearance">
+        <item name="android:textSize">@dimen/detail_error_detailed_text_size</item>
+        <item name="android:textColor">@color/silver_chalice</item>
     </style>
 </resources>

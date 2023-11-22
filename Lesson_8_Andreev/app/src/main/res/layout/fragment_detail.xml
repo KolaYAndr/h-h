@@ -1,55 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_background"
-    android:orientation="vertical"
-    tools:context=".presentation.ui.fragments.catalog_fragment.CatalogFragment">
+    tools:context=".presentation.ui.fragments.detail_fragment.DetailFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/catalogToolbar"
-        style="@style/Theme.HnHApp.Catalog.Toolbar"
+        android:id="@+id/detailToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/toolbar_menu">
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/smalt">
 
         <TextView
-            style="@style/Theme.HnHApp.Catalog.ToolbarText"
+            android:id="@+id/detailToolbarText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/catalog" />
+            android:layout_height="wrap_content" />
 
     </com.google.android.material.appbar.MaterialToolbar>
 
+
     <ViewFlipper
-        android:id="@+id/catalogViewFlipper"
+        android:id="@+id/detailViewFlipper"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" >
+
 
         <ProgressBar
-            android:id="@+id/catalogProgressBar"
-            style="@style/Theme.HnHApp.Catalog.ProgressBar"
+            android:id="@+id/detailProgressBar"
+            style="@style/Theme.HnHApp.Detail.ProgressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
 
         <LinearLayout
-            android:id="@+id/catalogErrorScreen"
+            android:id="@+id/detailErrorScreen"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="@dimen/catalog_error_image_size"
-                android:layout_height="@dimen/catalog_error_image_size"
+                android:layout_width="@dimen/detail_error_image_size"
+                android:layout_height="@dimen/detail_error_image_size"
                 android:src="@drawable/star_error_image" />
 
             <TextView
-                android:id="@+id/catalogUnexpectedErrorText"
-                style="@style/Theme.HnHApp.Catalog.ErrorScreen.Unexpected"
+                android:id="@+id/detailUnexpectedErrorText"
+                style="@style/Theme.HnHApp.Detail.ErrorScreen.Unexpected"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/normal_200"
@@ -57,8 +56,8 @@
                 android:text="@string/unexpected_error" />
 
             <TextView
-                android:id="@+id/catalogUnexpectedErrorDetailed"
-                style="@style/Theme.HnHApp.Catalog.ErrorScreen.Detailed"
+                android:id="@+id/detailUnexpectedErrorDetailed"
+                style="@style/Theme.HnHApp.Detail.ErrorScreen.Detailed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/normal_200"
@@ -67,7 +66,7 @@
                 tools:text="Детальный текст ошибки, занимающий несколько строк" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/catalogRefreshButton"
+                android:id="@+id/detailRefreshButton"
                 style="@style/Theme.HnHApp.RefreshButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -75,12 +74,7 @@
                 android:text="@string/refresh" />
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/catalogRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/catalog_recycler_view_shape"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_view"/>
     </ViewFlipper>
-</LinearLayout>
+
+
+</FrameLayout>

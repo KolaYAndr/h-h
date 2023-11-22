@@ -16,4 +16,6 @@ class AccessRepository @Inject constructor(
     suspend fun getProducts(pageSize: Int) : List<Product>{
         return apiLesson.getProducts(pageSize).data
     }
+
+    suspend fun getProduct(id: String) : Product = apiLesson.getProduct(id).data
 }

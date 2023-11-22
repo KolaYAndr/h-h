@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground"
     android:clickable="true"
+    android:focusable="true"
     android:paddingVertical="@dimen/normal_100">
 
     <ImageView
@@ -22,7 +23,7 @@
 
     <TextView
         android:id="@+id/itemName"
-        style="@style/Theme.HnHApp.ItemName"
+        style="@style/Theme.HnHApp.Item.Name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/normal_100"
@@ -33,7 +34,7 @@
 
     <TextView
         android:id="@+id/itemDescription"
-        style="@style/Theme.HnHApp.ItemDescription"
+        style="@style/Theme.HnHApp.Item.Description"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/purchaseItem"
@@ -44,7 +45,7 @@
 
     <TextView
         android:id="@+id/itemPrice"
-        style="@style/Theme.HnHApp.ItemPrice"
+        style="@style/Theme.HnHApp.Item.Price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/item_price_margin_bottom"

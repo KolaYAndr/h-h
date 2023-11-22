@@ -48,7 +48,7 @@ class CatalogAdapter : RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder>() 
             itemDescription.text = item.description.slice(13..<item.description.length)
             itemPrice.text = item.price.toString() + " ₽"
 
-            setOnItemClickListener {
+            setOnClickListener {
                 onItemClickListener?.let { it(item) }
             }
         }
@@ -59,7 +59,6 @@ class CatalogAdapter : RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder>() 
     fun setOnItemClickListener(listener: (Product) -> Unit) {
         onItemClickListener = listener
     }
-
 
     inner class CatalogViewHolder(view: View) : RecyclerView.ViewHolder(view)
 }

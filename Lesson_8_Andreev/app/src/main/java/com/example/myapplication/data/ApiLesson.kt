@@ -7,6 +7,7 @@ import com.example.myapplication.data.responcemodel.ResponseLogin
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PUT
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiLesson {
@@ -19,4 +20,9 @@ interface ApiLesson {
     suspend fun getProducts(
         @Query("pageSize") pageSize: Int
     ): BaseResponse<List<Product>>
+
+    @GET("products/{id}")
+    suspend fun getProduct(
+        @Path("id") id: String
+    ): BaseResponse<Product>
 }

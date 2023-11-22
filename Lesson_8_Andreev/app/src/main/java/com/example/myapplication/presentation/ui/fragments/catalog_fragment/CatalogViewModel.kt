@@ -11,20 +11,20 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CatalogViewModel @Inject constructor(private val productUseCase: ProductUseCase) : ViewModel() {
-    private val _productLiveData = MutableLiveData<ResponseStates<List<Product>>>()
-    val productData: MutableLiveData<ResponseStates<List<Product>>> = _productLiveData
+    private val _productsLiveData = MutableLiveData<ResponseStates<List<Product>>>()
+    val productsLiveData: MutableLiveData<ResponseStates<List<Product>>> = _productsLiveData
 
     fun getProducts(){
         viewModelScope.launch {
-            _productLiveData.value = ResponseStates.Loading()
+            _productsLiveData.value = ResponseStates.Loading()
 
             try {
-                _productLiveData.value = ResponseStates.Success(
+                _productsLiveData.value = ResponseStates.Success(
                     productUseCase.getProducts(USUAL_REQUEST_PRODUCT_SIZE)
                 )
             }
             catch (e: Exception){
-                _productLiveData.value = ResponseStates.Failure(e)
+                _productsLiveData.value = ResponseStates.Failure(e)
             }
         }
     }
