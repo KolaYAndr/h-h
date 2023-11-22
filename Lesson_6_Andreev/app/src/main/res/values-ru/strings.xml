@@ -7,4 +7,7 @@
     <string name="sign_in_password_hint">Пароль</string>
     <string name="sign_in_login_error">Поле заполнено неверно</string>
     <string name="sign_in_password_error">Поле заполнено неверно</string>
+    <string name="purchase">Купить</string>
+    <string name="purchase_action">@string/purchase</string>
+    <string name="unexpected_error">Произошла непредвиденная ошибка</string>
 </resources>
