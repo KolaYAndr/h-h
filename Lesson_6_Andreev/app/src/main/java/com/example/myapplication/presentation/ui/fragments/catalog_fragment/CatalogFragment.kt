@@ -23,6 +23,4 @@ class CatalogFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }

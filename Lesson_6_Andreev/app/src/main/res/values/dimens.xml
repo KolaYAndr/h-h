@@ -17,21 +17,4 @@
     <dimen name="text_field_error_size">16dp</dimen>
     <dimen name="corner_round">8dp</dimen>
     <dimen name="progress_bar_elevation">2dp</dimen>
-    <dimen name="item_image_view_size">112dp</dimen>
-    <dimen name="item_name_text_size">14sp</dimen>
-    <dimen name="item_description_text_size">12sp</dimen>
-    <dimen name="item_description_text_line">20sp</dimen>
-    <dimen name="item_price_text_size">14sp</dimen>
-    <dimen name="item_price_text_line">18dp</dimen>
-    <dimen name="item_price_margin_bottom">6dp</dimen>
-    <dimen name="item_purchase_padding_vertical">6dp</dimen>
-    <dimen name="item_purchase_padding_horizontal">8dp</dimen>
-    <dimen name="item_purchase_text_size">12sp</dimen>
-    <dimen name="item_purchase_text_line">16dp</dimen>
-    <dimen name="catalog_error_image_size">114dp</dimen>
-    <dimen name="catalog_error_unexpected_text_size">14sp</dimen>
-    <dimen name="catalog_error_unexpected_text_line">18dp</dimen>
-    <dimen name="catalog_error_detailed_text_size">12sp</dimen>
-    <dimen name="catalog_toolbar_text_size">20sp</dimen>
-    <dimen name="catalog_toolbar_text_line">24dp</dimen>
 </resources>
