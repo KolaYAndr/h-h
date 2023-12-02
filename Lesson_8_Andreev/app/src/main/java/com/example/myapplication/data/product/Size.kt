@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Size(
     @SerializedName("isAvailable")
-    val isAvailable: String,
+    val isAvailable: Boolean,
     @SerializedName("value")
     val value: String
 )

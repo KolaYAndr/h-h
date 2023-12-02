@@ -10,8 +10,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.createViewModelLazy
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.example.myapplication.data.product.Product
 import com.example.myapplication.data.responcemodel.ResponseStates
 import com.example.myapplication.databinding.FragmentDetailBinding
+import com.example.myapplication.presentation.ui.fragments.bottom_sheet_fragment.BottomSheetFragment
 import com.example.myapplication.utils.getError
 import com.example.myapplication.utils.makeSnackBar
 import dagger.android.support.AndroidSupportInjection
@@ -21,6 +23,7 @@ class DetailFragment : Fragment() {
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
     private val args: DetailFragmentArgs by navArgs()
+    private lateinit var product: Product
     private val detailViewModel by createViewModelLazy(
         DetailViewModel::class,
         { this.viewModelStore },
@@ -45,19 +48,30 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setCatalogViewModelObserver(view)
-
         getProduct()
+        setEndIconClickListener()
     }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-    private fun getProduct(){
+    private fun getProduct() {
         val id = args.productId
         detailViewModel.getProduct(id)
+    }
+
+    private fun setEndIconClickListener(){
+        binding.detailTextInputLayout.setEndIconOnClickListener {
+            val bottomSheetFragment = BottomSheetFragment(product)
+            bottomSheetFragment.show(parentFragmentManager, "tag")
+            parentFragmentManager.setFragmentResultListener(REQUEST_SIZE_KEY, this) { _, bundle ->
+                val text = bundle.getString(SIZE_KEY)
+                binding.detailTextInputEditText.setText(text)
+                bottomSheetFragment.dismiss()
+            }
+        }
     }
 
     private fun setCatalogViewModelObserver(view: View) {
@@ -68,13 +82,14 @@ class DetailFragment : Fragment() {
                 }
 
                 is ResponseStates.Failure -> {
-                    //binding.detailUnexpectedErrorDetailed.text = value.e.getError()
+                    binding.detailUnexpectedErrorDetailed.text = value.e.getError()
                     binding.detailViewFlipper.displayedChild = 1
                 }
 
                 is ResponseStates.Success -> {
-                    //catalogAdapter.differ.submitList(value.data)
                     binding.detailViewFlipper.displayedChild = 2
+                    product = value.data
+
                 }
 
                 else -> {
@@ -84,5 +99,10 @@ class DetailFragment : Fragment() {
                 }
             }
         }
+    }
+
+    companion object{
+        const val REQUEST_SIZE_KEY = "request size"
+        const val SIZE_KEY = "size"
     }
 }

@@ -58,7 +58,6 @@ class CatalogFragment : Fragment() {
         }
 
         catalogAdapter.setOnItemClickListener {
-            Log.d("id", it.id)
             findNavController().navigate(
                 CatalogFragmentDirections.actionCatalogFragmentToDetailFragment(
                     it.id
