@@ -13,15 +13,18 @@
     </style>
 
     <style name="TextAppearance.TextField" parent="TextAppearance">
-        <item name="android:textSize">@dimen/text_field_hint_size</item>
+        <item name="android:textSize">@dimen/text_field_input_size</item>
+        <item name="android:lineSpacingExtra">@dimen/text_field_input_line</item>
     </style>
 
     <style name="TextAppearance.TextField.Hint" parent="TextAppearance">
         <item name="android:textSize">@dimen/text_field_hint_size</item>
+        <item name="android:lineSpacingExtra">@dimen/text_field_hint_line</item>
     </style>
 
     <style name="TextAppearance.TextField.Error" parent="TextAppearance">
         <item name="android:textSize">@dimen/text_field_error_size</item>
+        <item name="android:lineSpacingExtra">@dimen/text_field_error_line</item>
     </style>
 
     <style name="TextAppearance.Badge" parent="TextAppearance">
@@ -197,5 +200,14 @@
     <style name="Theme.HnHApp.Detail.BulletPoints" parent="TextAppearance.BulletPoints">
         <item name="android:textSize">@dimen/detail_body_text_size</item>
         <item name="android:lineSpacingExtra">@dimen/detail_body_text_line</item>
+    </style>
+
+    <style name="TextAppearance.BottomSheet" parent="TextAppearance">
+        <item name="android:textSize">@dimen/bottom_sheet_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/bottom_sheet_text_line</item>
+    </style>
+
+    <style name="Theme.HnHApp.BottomSheet" parent="Widget.Material3.BottomSheet">
+        <item name="android:textAppearance">@style/TextAppearance.BottomSheet</item>
     </style>
 </resources>

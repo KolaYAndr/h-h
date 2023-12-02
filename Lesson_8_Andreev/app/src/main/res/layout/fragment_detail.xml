@@ -157,6 +157,7 @@
                     android:layout_marginHorizontal="@dimen/normal_100"
                     android:layout_marginTop="@dimen/normal_100"
                     android:hint="@string/size"
+                    app:endIconMode="custom"
                     app:endIconDrawable="@drawable/ic_arrow_forward"
                     app:endIconTint="@color/smalt">
 

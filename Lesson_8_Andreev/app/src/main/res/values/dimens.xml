@@ -14,8 +14,11 @@
     <dimen name="text_refresh_button_size">12sp</dimen>
     <dimen name="text_refresh_button_line">4dp</dimen>
     <dimen name="text_field_input_size">16sp</dimen>
-    <dimen name="text_field_hint_size">16dp</dimen>
-    <dimen name="text_field_error_size">16dp</dimen>
+    <dimen name="text_field_input_line">8dp</dimen>
+    <dimen name="text_field_hint_size">16sp</dimen>
+    <dimen name="text_field_hint_line">8dp</dimen>
+    <dimen name="text_field_error_size">12sp</dimen>
+    <dimen name="text_field_error_line">4dp</dimen>
     <dimen name="corner_round">8dp</dimen>
     <dimen name="progress_bar_elevation">2dp</dimen>
     <dimen name="item_image_view_size">112dp</dimen>
@@ -59,4 +62,7 @@
     <dimen name="detail_margin_bottom">94dp</dimen>
     <dimen name="detail_body_text_size">14sp</dimen>
     <dimen name="detail_body_text_line">6dp</dimen>
+    <dimen name="bottom_sheet_padding_vertical">10dp</dimen>
+    <dimen name="bottom_sheet_text_size">16sp</dimen>
+    <dimen name="bottom_sheet_text_line">2dp</dimen>
 </resources>

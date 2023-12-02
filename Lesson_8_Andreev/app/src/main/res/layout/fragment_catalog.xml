@@ -28,52 +28,52 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-<!--        <ProgressBar-->
-<!--            android:id="@+id/catalogProgressBar"-->
-<!--            style="@style/Theme.HnHApp.Catalog.ProgressBar"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center" />-->
+        <ProgressBar
+            android:id="@+id/catalogProgressBar"
+            style="@style/Theme.HnHApp.Catalog.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
 
-<!--        <LinearLayout-->
-<!--            android:id="@+id/catalogErrorScreen"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:gravity="center"-->
-<!--            android:orientation="vertical">-->
+        <LinearLayout
+            android:id="@+id/catalogErrorScreen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
 
-<!--            <ImageView-->
-<!--                android:layout_width="@dimen/catalog_error_image_size"-->
-<!--                android:layout_height="@dimen/catalog_error_image_size"-->
-<!--                android:src="@drawable/star_error_image" />-->
+            <ImageView
+                android:layout_width="@dimen/catalog_error_image_size"
+                android:layout_height="@dimen/catalog_error_image_size"
+                android:src="@drawable/star_error_image" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/catalogUnexpectedErrorText"-->
-<!--                style="@style/Theme.HnHApp.Catalog.ErrorScreen.Unexpected"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginHorizontal="@dimen/normal_200"-->
-<!--                android:layout_marginTop="@dimen/normal_150"-->
-<!--                android:text="@string/unexpected_error" />-->
+            <TextView
+                android:id="@+id/catalogUnexpectedErrorText"
+                style="@style/Theme.HnHApp.Catalog.ErrorScreen.Unexpected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/normal_200"
+                android:layout_marginTop="@dimen/normal_150"
+                android:text="@string/unexpected_error" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/catalogUnexpectedErrorDetailed"-->
-<!--                style="@style/Theme.HnHApp.Catalog.ErrorScreen.Detailed"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginHorizontal="@dimen/normal_200"-->
-<!--                android:layout_marginTop="@dimen/normal_50"-->
-<!--                android:gravity="center"-->
-<!--                tools:text="Детальный текст ошибки, занимающий несколько строк" />-->
+            <TextView
+                android:id="@+id/catalogUnexpectedErrorDetailed"
+                style="@style/Theme.HnHApp.Catalog.ErrorScreen.Detailed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/normal_200"
+                android:layout_marginTop="@dimen/normal_50"
+                android:gravity="center"
+                tools:text="Детальный текст ошибки, занимающий несколько строк" />
 
-<!--            <com.google.android.material.button.MaterialButton-->
-<!--                android:id="@+id/catalogRefreshButton"-->
-<!--                style="@style/Theme.HnHApp.RefreshButton"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="24dp"-->
-<!--                android:text="@string/refresh" />-->
-<!--        </LinearLayout>-->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/catalogRefreshButton"
+                style="@style/Theme.HnHApp.RefreshButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/refresh" />
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/catalogRecyclerView"
