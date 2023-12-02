@@ -13,4 +13,5 @@
     <string name="unexpected_error">Unexpected error occurred</string>
     <string name="refresh">Refresh</string>
     <string name="catalog">Catalog</string>
+    <string name="size">Size</string>
 </resources>

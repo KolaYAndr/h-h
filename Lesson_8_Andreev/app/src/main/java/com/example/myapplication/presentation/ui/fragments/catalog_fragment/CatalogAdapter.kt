@@ -46,7 +46,7 @@ class CatalogAdapter : RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder>() 
             Glide.with(this).load(product.images[0]).into(productImage)
             productName.text = product.title
             productDepartment.text = product.department
-            productPrice.text = String.format("%s ₽", product.price);
+            productPrice.text = String.format("%s ₽", product.price)
 
             setOnClickListener {
                 onItemClickListener?.let { it(product) }
