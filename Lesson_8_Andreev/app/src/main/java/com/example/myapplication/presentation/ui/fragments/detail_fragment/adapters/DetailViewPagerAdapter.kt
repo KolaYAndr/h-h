@@ -49,6 +49,8 @@ class DetailViewPagerAdapter :
         holder.bind(imageUrl)
     }
 
+
+
     inner class DetailViewPagerHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(imageUrl: String) {
             val imageView: ImageView = itemView.findViewById(R.id.detailViewPagerImage)

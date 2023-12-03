@@ -1,12 +1,14 @@
 package com.example.myapplication.presentation.ui.fragments.detail_fragment
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.createViewModelLazy
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -85,17 +87,18 @@ class DetailFragment : Fragment() {
     }
 
     private fun initAdapters() {
-        detailRecyclerAdapter = DetailRecyclerAdapter()
-        detailRecyclerAdapter.submitList(product.images)
-        binding.detailImagesRecycler.apply {
-            adapter = detailRecyclerAdapter
-            setHasFixedSize(true)
-        }
-
         detailViewPagerAdapter = DetailViewPagerAdapter()
         detailViewPagerAdapter.submitList(product.images)
         binding.detailViewPager.apply {
             adapter = detailViewPagerAdapter
+        }
+
+
+        detailRecyclerAdapter = DetailRecyclerAdapter(binding.detailViewPager)
+        detailRecyclerAdapter.submitList(product.images)
+        binding.detailImagesRecycler.apply {
+            adapter = detailRecyclerAdapter
+            setHasFixedSize(true)
         }
     }
 
@@ -105,8 +108,50 @@ class DetailFragment : Fragment() {
         }
     }
 
+    private fun setProductInfo(){
+        setToolbarTitle()
+        setProductPrice()
+        setProductBadge()
+        setProductName()
+        setProductDepartment()
+        setProductDescription()
+        setProductBulletPoints()
+    }
+
     private fun setToolbarTitle() {
         binding.detailToolbarText.text = product.title
+    }
+
+    private fun setProductPrice(){
+        binding.detailProductPrice.text = String.format("%s ₽", product.price)
+    }
+
+    private fun setProductBadge(){
+        val productBadge = product.badge.first()
+        binding.detailProductBadge.text = productBadge.value
+
+        val colorDrawable = ColorDrawable(Color.parseColor(productBadge.color))
+        binding.detailProductBadge.background = colorDrawable
+    }
+
+    private fun setProductName(){
+        binding.detailProductName.text = product.title
+    }
+
+    private fun setProductDepartment(){
+        binding.detailProductDepartment.text = product.department
+    }
+
+    private fun setProductDescription(){
+        binding.detailProductDescription.text = product.description.substring(13)
+    }
+
+    private fun setProductBulletPoints(){
+        binding.detailBulletPoints.text = buildString {
+            product.details.forEach {
+                append(String.format("• %s\n", it))
+            }
+        }
     }
 
     private fun setDetailViewModelObserver(view: View) {
@@ -124,7 +169,7 @@ class DetailFragment : Fragment() {
                 is ResponseStates.Success -> {
                     binding.detailViewFlipper.displayedChild = 2
                     product = value.data
-                    setToolbarTitle()
+                    setProductInfo()
                     initAdapters()
                 }
 

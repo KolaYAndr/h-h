@@ -7,11 +7,12 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.utils.DEFAULT_SIZE
 
-class DetailRecyclerAdapter :
+class DetailRecyclerAdapter(private val viewPager: ViewPager2) :
     RecyclerView.Adapter<DetailRecyclerAdapter.DetailRecyclerViewHolder>() {
     private val callback = object : DiffUtil.ItemCallback<String>() {
         override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
@@ -48,14 +49,13 @@ class DetailRecyclerAdapter :
         val imageUrl = differ.currentList[position]
         holder.bind(imageUrl)
     }
-
-    private var onItemClickListener: ((String) -> Unit)? = null
-
-    fun setOnItemClickListener(listener: (String) -> Unit) {
-        onItemClickListener = listener
-    }
-
     inner class DetailRecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        init {
+            itemView.setOnClickListener {
+                viewPager.currentItem = adapterPosition
+            }
+        }
+
         fun bind(imageUrl: String) {
             val itemProductImage = itemView.findViewById<ImageView>(R.id.detailRecyclerImage)
 
@@ -63,10 +63,6 @@ class DetailRecyclerAdapter :
                 Glide.with(this)
                     .load(imageUrl)
                     .into(itemProductImage)
-
-                setOnClickListener {
-                    onItemClickListener?.let { it(imageUrl) }
-                }
             }
 
         }
