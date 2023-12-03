@@ -59,9 +59,7 @@ class CatalogFragment : Fragment() {
 
         catalogAdapter.setOnItemClickListener {
             findNavController().navigate(
-                CatalogFragmentDirections.actionCatalogFragmentToDetailFragment(
-                    it.id
-                )
+                CatalogFragmentDirections.actionCatalogFragmentToDetailFragment(it.id)
             )
         }
     }
@@ -84,7 +82,7 @@ class CatalogFragment : Fragment() {
                 }
 
                 is ResponseStates.Success -> {
-                    catalogAdapter.differ.submitList(value.data)
+                    catalogAdapter.submitList(value.data)
                     binding.catalogViewFlipper.displayedChild = 2
                 }
 

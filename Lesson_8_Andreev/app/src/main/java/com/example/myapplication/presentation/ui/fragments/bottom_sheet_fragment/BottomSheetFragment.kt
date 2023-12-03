@@ -11,7 +11,7 @@ import com.example.myapplication.presentation.ui.fragments.detail_fragment.Detai
 import com.example.myapplication.presentation.ui.fragments.detail_fragment.DetailFragment.Companion.SIZE_KEY
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class BottomSheetFragment(val product: Product) : BottomSheetDialogFragment() {
+class BottomSheetFragment(private val product: Product) : BottomSheetDialogFragment() {
     private var _binding : BottomSheetFragmentBinding? = null
     private val binding get() = _binding!!
 

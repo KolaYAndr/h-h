@@ -10,14 +10,17 @@
         android:id="@+id/detailToolbar"
         style="@style/Theme.HnHApp.Detail.Toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         app:navigationIcon="@drawable/ic_arrow_back"
         app:navigationIconTint="@color/smalt">
 
         <TextView
             android:id="@+id/detailToolbarText"
+            style="@style/Theme.HnHApp.Detail.ToolbarText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="@integer/detail_toolbar_max_lines" />
 
     </com.google.android.material.appbar.MaterialToolbar>
 
@@ -88,9 +91,9 @@
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/detailViewPager"
+                    android:layout_gravity="center"
                     android:layout_width="@dimen/detail_viewpager_size"
-                    android:layout_height="@dimen/detail_viewpager_size"
-                    android:layout_gravity="center" />
+                    android:layout_height="@dimen/detail_viewpager_size" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/detailImagesRecycler"
@@ -158,16 +161,16 @@
                     android:layout_marginHorizontal="@dimen/normal_100"
                     android:layout_marginTop="@dimen/normal_100"
                     android:hint="@string/size"
-                    app:endIconMode="custom"
                     app:endIconDrawable="@drawable/ic_arrow_forward"
+                    app:endIconMode="custom"
                     app:endIconTint="@color/smalt">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/detailTextInputEditText"
                         android:layout_width="match_parent"
-                        android:focusable="false"
+                        android:layout_height="wrap_content"
                         android:clickable="false"
-                        android:layout_height="wrap_content" />
+                        android:focusable="false" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
