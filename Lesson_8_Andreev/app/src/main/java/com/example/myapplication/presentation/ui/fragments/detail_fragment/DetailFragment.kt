@@ -2,7 +2,7 @@ package com.example.myapplication.presentation.ui.fragments.detail_fragment
 
 import android.content.Context
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +13,7 @@ import androidx.fragment.app.createViewModelLazy
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.myapplication.R
 import com.example.myapplication.data.product.Product
 import com.example.myapplication.data.responcemodel.ResponseStates
 import com.example.myapplication.databinding.FragmentDetailBinding
@@ -130,8 +131,14 @@ class DetailFragment : Fragment() {
         val productBadge = product.badge.first()
         binding.detailProductBadge.text = productBadge.value
 
-        val colorDrawable = ColorDrawable(Color.parseColor(productBadge.color))
-        binding.detailProductBadge.background = colorDrawable
+        val color = Color.parseColor(productBadge.color)
+        val gradientDrawable = GradientDrawable().apply {
+            shape = GradientDrawable.RECTANGLE
+            cornerRadius = resources.getDimension(R.dimen.detail_product_badge_radius)
+            setColor(color)
+        }
+
+        binding.detailProductBadge.background = gradientDrawable
     }
 
     private fun setProductName(){
