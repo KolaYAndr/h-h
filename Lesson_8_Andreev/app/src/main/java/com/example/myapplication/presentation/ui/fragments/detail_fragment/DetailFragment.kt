@@ -63,6 +63,7 @@ class DetailFragment : Fragment() {
         setNavigationBack()
         getProduct()
         setEndIconClickListener()
+        setRefreshButton()
     }
 
     override fun onDestroyView() {
@@ -73,6 +74,12 @@ class DetailFragment : Fragment() {
     private fun getProduct() {
         val id = args.productId
         detailViewModel.getProduct(id)
+    }
+
+    private fun setRefreshButton(){
+        binding.detailRefreshButton.setOnClickListener {
+            getProduct()
+        }
     }
 
     private fun setEndIconClickListener() {

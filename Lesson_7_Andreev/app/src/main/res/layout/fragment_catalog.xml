@@ -13,7 +13,7 @@
         style="@style/Theme.HnHApp.Catalog.Toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/toolbar_menu">
+        app:menu="@menu/toolbar_menu" >
 
         <TextView
             style="@style/Theme.HnHApp.Catalog.ToolbarText"

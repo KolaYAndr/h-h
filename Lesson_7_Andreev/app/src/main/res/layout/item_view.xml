@@ -6,6 +6,8 @@
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground"
     android:clickable="true"
+    android:focusable="true"
+    android:paddingHorizontal="@dimen/normal_100"
     android:paddingVertical="@dimen/normal_100">
 
     <ImageView
@@ -13,7 +15,6 @@
         android:layout_width="@dimen/item_image_view_size"
         android:layout_height="@dimen/item_image_view_size"
         android:layout_marginVertical="@dimen/normal_100"
-        android:layout_marginStart="@dimen/normal_100"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,14 +26,14 @@
         style="@style/Theme.HnHApp.ItemName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/normal_100"
+        android:layout_marginStart="@dimen/normal_100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/itemImage"
         app:layout_constraintTop_toTopOf="@id/itemImage"
         tools:text="Nike Tampa Bay Buccaneers Super Bowl LV" />
 
     <TextView
-        android:id="@+id/itemDescription"
+        android:id="@+id/itemDepartment"
         style="@style/Theme.HnHApp.ItemDescription"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -59,6 +60,7 @@
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
         android:clickable="true"
+        android:focusable="true"
         android:gravity="center"
         android:paddingHorizontal="@dimen/item_purchase_padding_horizontal"
         android:paddingVertical="@dimen/item_purchase_padding_vertical"

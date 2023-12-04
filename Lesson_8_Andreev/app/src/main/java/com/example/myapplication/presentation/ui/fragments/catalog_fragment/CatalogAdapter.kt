@@ -19,7 +19,7 @@ class CatalogAdapter : RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder>() 
         }
 
         override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
-            return oldItem.images[0] == newItem.images[0]
+            return oldItem == newItem
         }
     }
 
@@ -60,7 +60,9 @@ class CatalogAdapter : RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder>() 
                 Glide.with(this).load(product.images[0]).into(productImage)
                 productName.text = product.title
                 productDepartment.text = product.department
-                productPrice.text = String.format("%s ₽", product.price)
+
+                val roubleSign = resources.getString(R.string.rouble_sign)
+                productPrice.text = String.format("%s $roubleSign", product.price)
 
                 setOnClickListener {
                     onItemClickListener?.let { it(product) }

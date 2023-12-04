@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.data.responcemodel.ResponseStates
 import com.example.myapplication.databinding.FragmentCatalogBinding
+import com.example.myapplication.presentation.view.ItemDivider
 import com.example.myapplication.utils.getError
 import com.example.myapplication.utils.makeSnackBar
 import dagger.android.support.AndroidSupportInjection
@@ -48,15 +49,19 @@ class CatalogFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
-
         setCatalogViewModelObserver(view)
-
         catalogViewModel.getProducts()
+        setItemDecoration()
+        setRefreshButton()
+        setItemClickListener()
+    }
 
-        binding.catalogRefreshButton.setOnClickListener {
-            catalogViewModel.getProducts()
-        }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
+    private fun setItemClickListener(){
         catalogAdapter.setOnItemClickListener {
             findNavController().navigate(
                 CatalogFragmentDirections.actionCatalogFragmentToDetailFragment(it.id)
@@ -64,9 +69,14 @@ class CatalogFragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun setItemDecoration(){
+        binding.catalogRecyclerView.addItemDecoration(ItemDivider(requireContext()))
+    }
+
+    private fun setRefreshButton(){
+        binding.catalogRefreshButton.setOnClickListener {
+            catalogViewModel.getProducts()
+        }
     }
 
     private fun setCatalogViewModelObserver(view: View) {
