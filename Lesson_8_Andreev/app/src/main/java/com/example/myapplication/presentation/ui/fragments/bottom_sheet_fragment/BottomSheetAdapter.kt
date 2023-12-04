@@ -49,8 +49,8 @@ class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetAdapter.BottomSheetVi
     }
 
     inner class BottomSheetViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private val itemSizeText = itemView.findViewById<TextView>(R.id.itemSizeText)
         fun bind(size: Size){
-            val itemSizeText = itemView.findViewById<TextView>(R.id.itemSizeText)
             itemView.apply {
                 itemSizeText.text = size.value
 

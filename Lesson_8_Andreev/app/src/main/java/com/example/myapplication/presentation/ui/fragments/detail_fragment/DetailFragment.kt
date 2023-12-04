@@ -94,7 +94,6 @@ class DetailFragment : Fragment() {
             adapter = detailViewPagerAdapter
         }
 
-
         detailRecyclerAdapter = DetailRecyclerAdapter(binding.detailViewPager)
         detailRecyclerAdapter.submitList(product.images)
         binding.detailImagesRecycler.apply {

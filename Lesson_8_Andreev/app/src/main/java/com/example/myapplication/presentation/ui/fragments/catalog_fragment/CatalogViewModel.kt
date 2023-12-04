@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.myapplication.R
 import com.example.myapplication.data.product.Product
 import com.example.myapplication.data.responcemodel.ResponseStates
-import com.example.myapplication.domen.usecase.ProductUseCase
+import com.example.myapplication.domain.usecase.ProductUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -30,6 +30,6 @@ class CatalogViewModel @Inject constructor(private val productUseCase: ProductUs
     }
 
     companion object {
-        val USUAL_REQUEST_PRODUCT_SIZE = R.integer.default_request_product_size
+        private val USUAL_REQUEST_PRODUCT_SIZE = R.integer.default_request_product_size
     }
 }

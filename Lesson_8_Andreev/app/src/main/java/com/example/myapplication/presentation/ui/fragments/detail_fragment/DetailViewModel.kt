@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.data.product.Product
 import com.example.myapplication.data.responcemodel.ResponseStates
-import com.example.myapplication.domen.usecase.ProductUseCase
+import com.example.myapplication.domain.usecase.ProductUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

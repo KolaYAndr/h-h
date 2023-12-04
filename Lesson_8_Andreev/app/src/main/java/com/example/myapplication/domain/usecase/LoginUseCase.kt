@@ -1,4 +1,4 @@
-package com.example.myapplication.domen.usecase
+package com.example.myapplication.domain.usecase
 
 import com.example.myapplication.data.repository.AccessRepository
 import com.example.myapplication.data.repository.PreferenceStorage

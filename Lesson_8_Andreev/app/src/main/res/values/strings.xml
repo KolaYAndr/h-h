@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Lesson 7</string>
+    <string name="app_name" translatable="false">Lesson 8</string>
     <string name="sign_in">Sign in</string>
     <string name="sign_in_title">@string/sign_in</string>
     <string name="sign_in_action">@string/sign_in</string>

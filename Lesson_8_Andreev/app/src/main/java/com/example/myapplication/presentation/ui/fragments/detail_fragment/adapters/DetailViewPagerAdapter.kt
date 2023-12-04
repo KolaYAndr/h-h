@@ -52,8 +52,8 @@ class DetailViewPagerAdapter :
 
 
     inner class DetailViewPagerHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private val imageView: ImageView = itemView.findViewById(R.id.detailViewPagerImage)
         fun bind(imageUrl: String) {
-            val imageView: ImageView = itemView.findViewById(R.id.detailViewPagerImage)
             Glide.with(itemView)
                 .load(imageUrl)
                 .into(imageView)

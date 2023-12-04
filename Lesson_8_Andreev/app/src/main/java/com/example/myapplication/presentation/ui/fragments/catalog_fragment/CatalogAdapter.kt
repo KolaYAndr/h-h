@@ -51,12 +51,11 @@ class CatalogAdapter : RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder>() 
     }
 
     inner class CatalogViewHolder(view: View) : RecyclerView.ViewHolder(view){
+        private val productImage = itemView.findViewById<ImageView>(R.id.productImage)
+        private val productName = itemView.findViewById<TextView>(R.id.productName)
+        private val productDepartment = itemView.findViewById<TextView>(R.id.productDepartment)
+        private val productPrice = itemView.findViewById<TextView>(R.id.productPrice)
         fun bind(product: Product) {
-            val productImage = itemView.findViewById<ImageView>(R.id.productImage)
-            val productName = itemView.findViewById<TextView>(R.id.productName)
-            val productDepartment = itemView.findViewById<TextView>(R.id.productDepartment)
-            val productPrice = itemView.findViewById<TextView>(R.id.productPrice)
-
             itemView.apply {
                 Glide.with(this).load(product.images[0]).into(productImage)
                 productName.text = product.title

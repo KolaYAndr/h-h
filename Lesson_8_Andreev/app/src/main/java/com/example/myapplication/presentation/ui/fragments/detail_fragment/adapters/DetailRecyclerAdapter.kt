@@ -50,6 +50,7 @@ class DetailRecyclerAdapter(private val viewPager: ViewPager2) :
         holder.bind(imageUrl)
     }
     inner class DetailRecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private val itemProductImage = itemView.findViewById<ImageView>(R.id.detailRecyclerImage)
         init {
             itemView.setOnClickListener {
                 viewPager.currentItem = adapterPosition
@@ -57,8 +58,6 @@ class DetailRecyclerAdapter(private val viewPager: ViewPager2) :
         }
 
         fun bind(imageUrl: String) {
-            val itemProductImage = itemView.findViewById<ImageView>(R.id.detailRecyclerImage)
-
             itemView.apply {
                 Glide.with(this)
                     .load(imageUrl)

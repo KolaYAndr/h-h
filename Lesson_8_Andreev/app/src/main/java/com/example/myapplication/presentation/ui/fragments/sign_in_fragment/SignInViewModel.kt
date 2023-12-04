@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.data.responcemodel.ResponseLogin
 import com.example.myapplication.data.responcemodel.ResponseStates
-import com.example.myapplication.domen.usecase.LoginUseCase
+import com.example.myapplication.domain.usecase.LoginUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
