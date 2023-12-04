@@ -1,11 +1,10 @@
 package com.example.myapplication.db.converters
 
-import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-@ProvidedTypeConverter
+
 class ListOfStringConverter {
     @TypeConverter
     fun fromDetailsList(detailsList: List<String>): String {

@@ -1,12 +1,11 @@
 package com.example.myapplication.db.converters
 
-import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
 import com.example.myapplication.data.product.Size
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-@ProvidedTypeConverter
+
 class SizesConverter {
     @TypeConverter
     fun fromSizeList(sizeList: List<Size>): String {
