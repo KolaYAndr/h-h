@@ -42,10 +42,8 @@ class SignInFragment : Fragment() {
     }
 
     private fun goToCatalogScreen() {
-        //флаг наличия хотя бы одной ошибки
-        val errorFlag = checkErrors()
-        //флаг пустоты хотя бы одного из полей ввода
-        val emptinessFlag = checkEmptiness()
+        val errorFlag = checkErrors() //флаг наличия хотя бы одной ошибки
+        val emptinessFlag = checkEmptiness() //флаг пустоты хотя бы одного из полей ввода
         if (!errorFlag && !emptinessFlag)
             findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToCatalogFragment())
         setErrors()
@@ -53,10 +51,8 @@ class SignInFragment : Fragment() {
 
     private fun goToCatalogScreen(keyCode: Int, event: KeyEvent): Boolean {
         if (event.action == KeyEvent.ACTION_DOWN && keyCode == EditorInfo.IME_ACTION_DONE) {
-            //флаг наличия хотя бы одной ошибки
-            val errorFlag = checkErrors()
-            //флаг пустоты хотя бы одного из полей ввода
-            val emptinessFlag = checkEmptiness()
+            val errorFlag = checkErrors() //флаг наличия хотя бы одной ошибки
+            val emptinessFlag = checkEmptiness() //флаг пустоты хотя бы одного из полей ввода
             if (!errorFlag && !emptinessFlag) {
                 findNavController().navigate(SignInFragmentDirections.actionSignInFragmentToCatalogFragment())
                 return true
