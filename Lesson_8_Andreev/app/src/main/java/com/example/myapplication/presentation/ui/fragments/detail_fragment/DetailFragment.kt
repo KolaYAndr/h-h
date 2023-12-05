@@ -160,9 +160,10 @@ class DetailFragment : Fragment() {
     }
 
     private fun setProductBulletPoints(){
+        val bulletSpan = resources.getString(BULLET_SPAN)
         binding.detailBulletPoints.text = buildString {
             product.details.forEach {
-                append(String.format("• %s\n", it))
+                append(String.format("$bulletSpan %s\n", it))
             }
         }
     }
@@ -198,5 +199,6 @@ class DetailFragment : Fragment() {
     companion object {
         const val REQUEST_SIZE_KEY = "request size"
         const val SIZE_KEY = "size"
+        private val BULLET_SPAN = R.string.bullet_span
     }
 }
