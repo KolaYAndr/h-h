@@ -11,6 +11,7 @@ import androidx.fragment.app.createViewModelLazy
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.data.responcemodel.ResponseStates
 import com.example.myapplication.databinding.FragmentCatalogBinding
+import com.example.myapplication.presentation.view.ItemDivider
 import com.example.myapplication.utils.makeSnackBar
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
@@ -50,6 +51,8 @@ class CatalogFragment : Fragment() {
         setCatalogViewModelObserver(view)
 
         catalogViewModel.getProducts()
+
+        binding.catalogRecyclerView.addItemDecoration(ItemDivider(requireContext()))
 
         binding.refreshButton.setOnClickListener {
             catalogViewModel.getProducts()

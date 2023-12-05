@@ -19,7 +19,7 @@ class CatalogAdapter : RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder>() 
         }
 
         override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
-            return oldItem.images[0] == newItem.images[0]
+            return oldItem == newItem
         }
     }
 
@@ -36,22 +36,7 @@ class CatalogAdapter : RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder>() 
 
     override fun onBindViewHolder(holder: CatalogViewHolder, position: Int) {
         val item = differ.currentList[position]
-
-        val itemImage = holder.itemView.findViewById<ImageView>(R.id.itemImage)
-        val itemName = holder.itemView.findViewById<TextView>(R.id.itemName)
-        val itemDepartment = holder.itemView.findViewById<TextView>(R.id.itemDepartment)
-        val itemPrice = holder.itemView.findViewById<TextView>(R.id.itemPrice)
-
-        holder.itemView.apply {
-            Glide.with(this).load(item.images[0]).into(itemImage)
-            itemName.text = item.title
-            itemDepartment.text = item.department
-            itemPrice.text = StringBuilder(item.price).append(" ₽")
-
-            setOnItemClickListener {
-                onItemClickListener?.let { it(item) }
-            }
-        }
+        holder.bind(item)
     }
 
     private var onItemClickListener: ((Product) -> Unit)? = null
@@ -61,5 +46,24 @@ class CatalogAdapter : RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder>() 
     }
 
 
-    inner class CatalogViewHolder(view: View) : RecyclerView.ViewHolder(view)
+    inner class CatalogViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private val itemImage = itemView.findViewById<ImageView>(R.id.itemImage)
+        private val itemName = itemView.findViewById<TextView>(R.id.itemName)
+        private val itemDepartment = itemView.findViewById<TextView>(R.id.itemDepartment)
+        private val itemPrice = itemView.findViewById<TextView>(R.id.itemPrice)
+        fun bind(item: Product){
+            itemView.apply {
+                Glide.with(this).load(item.images[0]).into(itemImage)
+                itemName.text = item.title
+                itemDepartment.text = item.department
+
+                val roubleSign = resources.getString(R.string.rouble_sign)
+                itemPrice.text = String.format("%s $roubleSign", item.price)
+
+                setOnItemClickListener {
+                    onItemClickListener?.let { it(item) }
+                }
+            }
+        }
+    }
 }
