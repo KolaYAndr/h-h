@@ -14,6 +14,6 @@
     <string name="refresh">Refresh</string>
     <string name="catalog">Catalog</string>
     <string name="size">Size</string>
-    <string name="rouble_sign" translatable="false">₽</string>
-    <string name="bullet_span" translatable="false">•</string>
+    <string name="product_price" translatable="false">%d ₽</string>
+    <string name="bullet_string" translatable="false">• %s\n</string>
 </resources>

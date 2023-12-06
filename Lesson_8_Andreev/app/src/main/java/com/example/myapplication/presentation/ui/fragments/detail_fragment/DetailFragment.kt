@@ -130,7 +130,7 @@ class DetailFragment : Fragment() {
     }
 
     private fun setProductPrice(){
-        binding.detailProductPrice.text = String.format("%s ₽", product.price)
+        binding.detailProductPrice.text = resources.getString(R.string.product_price, product.price)
     }
 
     private fun setProductBadge(){
@@ -160,10 +160,9 @@ class DetailFragment : Fragment() {
     }
 
     private fun setProductBulletPoints(){
-        val bulletSpan = resources.getString(BULLET_SPAN)
         binding.detailBulletPoints.text = buildString {
             product.details.forEach {
-                append(String.format("$bulletSpan %s\n", it))
+                append(resources.getString(R.string.bullet_string, it))
             }
         }
     }
@@ -199,6 +198,5 @@ class DetailFragment : Fragment() {
     companion object {
         const val REQUEST_SIZE_KEY = "request size"
         const val SIZE_KEY = "size"
-        private val BULLET_SPAN = R.string.bullet_span
     }
 }

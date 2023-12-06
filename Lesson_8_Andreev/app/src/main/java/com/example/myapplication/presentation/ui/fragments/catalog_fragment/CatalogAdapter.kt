@@ -60,9 +60,7 @@ class CatalogAdapter : RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder>() 
                 Glide.with(this).load(product.images[0]).into(productImage)
                 productName.text = product.title
                 productDepartment.text = product.department
-
-                val roubleSign = resources.getString(R.string.rouble_sign)
-                productPrice.text = String.format("%s $roubleSign", product.price)
+                productPrice.text = resources.getString(R.string.product_price, product.price)
 
                 setOnClickListener {
                     onItemClickListener?.let { it(product) }
