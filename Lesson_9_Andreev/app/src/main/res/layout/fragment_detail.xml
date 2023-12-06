@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.fragments.detail_fragment.DetailFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/detailToolbar"
+        style="@style/Theme.HnHApp.Detail.Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/smalt">
+
+        <TextView
+            android:id="@+id/detailToolbarText"
+            style="@style/Theme.HnHApp.Detail.ToolbarText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="@integer/detail_toolbar_max_lines" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+
+    <ViewFlipper
+        android:id="@+id/detailViewFlipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/detailToolbar">
+
+
+        <ProgressBar
+            android:id="@+id/detailProgressBar"
+            style="@style/Theme.HnHApp.Detail.ProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:id="@+id/detailErrorScreen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/detail_error_image_size"
+                android:layout_height="@dimen/detail_error_image_size"
+                android:src="@drawable/star_error_image" />
+
+            <TextView
+                android:id="@+id/detailUnexpectedErrorText"
+                style="@style/Theme.HnHApp.Detail.ErrorScreen.Unexpected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/normal_200"
+                android:layout_marginTop="@dimen/normal_150"
+                android:text="@string/unexpected_error" />
+
+            <TextView
+                android:id="@+id/detailUnexpectedErrorDetailed"
+                style="@style/Theme.HnHApp.Detail.ErrorScreen.Detailed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/normal_200"
+                android:layout_marginTop="@dimen/normal_50"
+                android:gravity="center"
+                tools:text="Детальный текст ошибки, занимающий несколько строк" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/detailRefreshButton"
+                style="@style/Theme.HnHApp.RefreshButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/refresh" />
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/detailScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/detailViewPager"
+                    android:layout_gravity="center"
+                    android:layout_width="@dimen/detail_viewpager_size"
+                    android:layout_height="@dimen/detail_viewpager_size" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/detailImagesRecycler"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/normal_100"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_product_image_view" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/normal_100"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/detailProductPrice"
+                        style="@style/Theme.HnHApp.Detail.Price"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginStart="@dimen/normal_100"
+                        android:layout_weight="3"
+                        tools:text="9000R" />
+
+                    <TextView
+                        android:id="@+id/detailProductBadge"
+                        style="@style/Theme.HnHApp.Detail.Badge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center"
+                        android:layout_marginEnd="@dimen/normal_100"
+                        android:paddingHorizontal="@dimen/detail_badge_horizontal_padding"
+                        android:paddingVertical="@dimen/detail_badge_vertical_padding"
+                        tools:background="@color/smalt"
+                        tools:text="Хит сезона" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/detailProductName"
+                    style="@style/Theme.HnHApp.Detail.Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/normal_100"
+                    android:layout_marginTop="@dimen/normal_100"
+                    tools:text="Men's Nike Tom Brady Red Tampa Bay Buccaneers Super Bowl LV Bound Game Jersey" />
+
+                <TextView
+                    android:id="@+id/detailProductDepartment"
+                    style="@style/Theme.HnHApp.Item.Department"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/normal_100"
+                    android:layout_marginTop="@dimen/normal_25"
+                    tools:text="Джерси" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/detailTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/normal_100"
+                    android:layout_marginTop="@dimen/normal_100"
+                    android:hint="@string/size"
+                    app:endIconDrawable="@drawable/ic_arrow_forward"
+                    app:endIconMode="custom"
+                    app:endIconTint="@color/smalt">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/detailTextInputEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:focusable="false" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/detailProductDescription"
+                    style="@style/Theme.HnHApp.Detail.Description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/normal_100"
+                    android:layout_marginTop="@dimen/normal_100"
+                    tools:text="The Tampa Bay Buccaneers are headed to Super Bowl LV! As a major fan, this is no surprise but it's definitely worth celebrating, especially after the unprecedented 2020 NFL season. Add this Tom Brady Game Jersey to your collection to ensure you're Super Bowl ready. This Nike gear features bold commemorative graphics that will let the Tampa Bay Buccaneers know they have the best fans in the league." />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/detailDivider"
+                    style="@style/Theme.HnHApp.Detail.Divider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/normal_100"
+                    android:layout_marginTop="@dimen/normal_100" />
+
+                <TextView
+                    android:id="@+id/detailBulletPoints"
+                    style="@style/Theme.HnHApp.Detail.BulletPoints"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/normal_100"
+                    android:layout_marginTop="@dimen/normal_100"
+                    android:layout_marginBottom="@dimen/detail_margin_bottom"
+                    tools:text="Material: 100% Polyester\nFoam tongue helps reduce lace pressure.\nMesh in the upper provides a breathable and plush sensation that stretches with your foot.\nMidfoot webbing delivers security. The webbing tightens around your foot when you lace up, letting you choose your fit and feel.\nNike React foam is lightweight, springy and durable. More foam means better cushioning without the bulk. A Zoom Air unit in the forefoot delivers more bounce with every step. It's top-loaded to be closer to your foot for responsiveness.\nThe classic fit and feel of the Pegasus is back—with a wider toe box to provide extra room. Seaming on the upper provides a better shape and fit, delivering a fresh take on an icon.\nOfficially licensed\nImported\nBrand: Nike" />
+            </LinearLayout>
+
+        </ScrollView>
+
+    </ViewFlipper>
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Theme.HnHApp.PurchaseButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/detailViewFlipper"
+        android:layout_margin="@dimen/normal_100"
+        android:text="@string/purchase_action" />
+
+</RelativeLayout>

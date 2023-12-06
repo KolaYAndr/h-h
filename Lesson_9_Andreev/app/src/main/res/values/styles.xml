@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance" parent="android:TextAppearance" />
+
+    <style name="TextAppearance.H1" parent="TextAppearance">
+        <item name="android:textSize">@dimen/text_h1_size</item>
+        <item name="android:lineSpacingExtra">@dimen/text_h1_line</item>
+    </style>
+
+    <style name="TextAppearance.Button" parent="TextAppearance">
+        <item name="textAllCaps">true</item>
+    </style>
+
+    <style name="TextAppearance.TextField" parent="TextAppearance">
+        <item name="android:textSize">@dimen/text_field_input_size</item>
+        <item name="android:lineSpacingExtra">@dimen/text_field_input_line</item>
+    </style>
+
+    <style name="TextAppearance.TextField.Hint" parent="TextAppearance">
+        <item name="android:textSize">@dimen/text_field_hint_size</item>
+        <item name="android:lineSpacingExtra">@dimen/text_field_hint_line</item>
+    </style>
+
+    <style name="TextAppearance.TextField.Error" parent="TextAppearance">
+        <item name="android:textSize">@dimen/text_field_error_size</item>
+        <item name="android:lineSpacingExtra">@dimen/text_field_error_line</item>
+    </style>
+
+    <style name="TextAppearance.Badge" parent="TextAppearance">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Theme.HnHApp.Detail.Badge" parent="TextAppearance.Badge">
+        <item name="android:textSize">@dimen/detail_badge_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/detail_badge_text_line</item>
+    </style>
+
+    <style name="Theme.HnHApp.ShapeAppearanceButton">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/corner_round</item>
+    </style>
+
+    <style name="Theme.HnHApp.ErrorScreen.Unexpected" parent="TextAppearance">
+        <item name="android:textSize">@dimen/error_unexpected_text_size</item>
+        <item name="android:textColor">@color/silver_chalice</item>
+        <item name="android:lineSpacingExtra">@dimen/error_unexpected_text_line</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Theme.HnHApp.Catalog.ErrorScreen.Unexpected" parent="Theme.HnHApp.ErrorScreen.Unexpected" />
+
+    <style name="Theme.HnHApp.Detail.ErrorScreen.Unexpected" parent="Theme.HnHApp.ErrorScreen.Unexpected" />
+
+    <style name="Theme.HnHApp.ErrorScreen.Detailed" parent="TextAppearance">
+        <item name="android:textSize">@dimen/error_detailed_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/error_detailed_text_line</item>
+        <item name="android:textColor">@color/silver_chalice</item>
+    </style>
+
+    <style name="Theme.HnHApp.Catalog.ErrorScreen.Detailed" parent="Theme.HnHApp.ErrorScreen.Detailed" />
+
+    <style name="Theme.HnHApp.Detail.ErrorScreen.Detailed" parent="Theme.HnHApp.ErrorScreen.Detailed" />
+
+    <style name="TextAppearance.ToolbarText" parent="TextAppearance">
+        <item name="android:textSize">@dimen/toolbar_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/toolbar_text_line</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Theme.HnHApp.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:textAppearance">@style/TextAppearance.ToolbarText</item>
+    </style>
+
+    <style name="Theme.HnHApp.Catalog.ToolbarText" parent="TextAppearance.ToolbarText">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Theme.HnHApp.Catalog.Toolbar" parent="Theme.HnHApp.Toolbar">
+        <item name="android:background">@color/smalt</item>
+        <item name="actionMenuTextColor">@color/white</item>
+    </style>
+
+    <style name="Theme.HnHApp.Detail.ToolbarText" parent="TextAppearance.ToolbarText">
+        <item name="android:textColor">@color/smalt</item>
+    </style>
+
+    <style name="Theme.HnHApp.Detail.Toolbar" parent="Theme.HnHApp.Toolbar">
+        <item name="android:background">@color/white</item>
+        <item name="android:textColor">@color/smalt</item>
+    </style>
+
+    <style name="Theme.HnHApp.Button" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="shapeAppearance">@style/Theme.HnHApp.ShapeAppearanceButton</item>
+        <item name="android:textAppearance">@style/TextAppearance.Button</item>
+    </style>
+
+    <style name="Theme.HnHApp.LoadableButton" parent="Theme.HnHApp.Button">`
+        <item name="android:textSize">@dimen/text_loading_button_size</item>
+        <item name="android:lineSpacingExtra">@dimen/text_loading_button_line</item>
+    </style>
+
+    <style name="Theme.HnHApp.RefreshButton" parent="Theme.HnHApp.Button">
+        <item name="android:textSize">@dimen/text_refresh_button_size</item>
+        <item name="android:lineSpacingExtra">@dimen/text_refresh_button_line</item>
+    </style>
+
+    <style name="Theme.HnHApp.PurchaseButton" parent="Theme.HnHApp.Button">
+        <item name="android:textSize">@dimen/detail_purchase_button_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/detail_purchase_button_text_line</item>
+    </style>
+
+    <style name="Theme.HnHApp.ShapeAppearanceTextInputLayout" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/corner_round</item>
+        <item name="cornerSizeTopRight">@dimen/corner_round</item>
+    </style>
+
+    <style name="Theme.HnHApp.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">@color/seashell</item>
+        <item name="boxStrokeColor">@color/text_field_box_stroke_color</item>
+        <item name="shapeAppearance">@style/Theme.HnHApp.ShapeAppearanceTextInputLayout</item>
+        <item name="android:textAppearance">@style/TextAppearance.TextField</item>
+        <item name="hintTextAppearance">@style/TextAppearance.TextField.Hint</item>
+        <item name="errorTextAppearance">@style/TextAppearance.TextField.Error</item>
+        <item name="android:textColorHint">@color/silver_chalice</item>
+        <item name="hintTextColor">@color/silver_chalice</item>
+        <item name="errorTextColor">@color/text_field_error</item>
+    </style>
+
+    <style name="Theme.HnHApp.Item.Name" parent="TextAppearance">
+        <item name="android:textSize">@dimen/item_name_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/item_name_text_line</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Theme.HnHApp.Detail.Name" parent="TextAppearance">
+        <item name="android:textSize">@dimen/detail_name_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/detail_name_text_line</item>
+    </style>
+
+    <style name="TextAppearance.Department" parent="TextAppearance">
+        <item name="android:textColor">@color/silver_chalice</item>
+        <item name="maxLines">@integer/item_department_max_lines</item>
+    </style>
+
+    <style name="Theme.HnHApp.Item.Department" parent="TextAppearance.Department">
+        <item name="android:textSize">@dimen/item_department_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/item_department_text_line</item>
+    </style>
+
+    <style name="Theme.HnHApp.Detail.Department" parent="TextAppearance.Department">
+        <item name="android:textSize">@dimen/detail_department_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/detail_department_text_line</item>
+    </style>
+
+    <style name="TextAppearance.Price" parent="TextAppearance">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Theme.HnHApp.Detail.Price" parent="TextAppearance.Price">
+        <item name="android:textSize">@dimen/detail_price_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/detail_price_text_line</item>
+    </style>
+
+    <style name="Theme.HnHApp.Item.Price" parent="TextAppearance.Price">
+        <item name="android:textSize">@dimen/item_price_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/item_price_text_line</item>
+    </style>
+
+    <style name="TextAppearance.Description" parent="TextAppearance" />
+
+    <style name="Theme.HnHApp.Detail.Description" parent="TextAppearance.Description">
+        <item name="android:textSize">@dimen/detail_description_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/detail_description_text_line</item>
+    </style>
+
+    <style name="Theme.HnhApp.Item.Purchase" parent="TextAppearance">
+        <item name="android:textSize">@dimen/item_purchase_text_size</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:lineSpacingExtra">@dimen/item_price_text_line</item>
+        <item name="android:textColor">@color/smalt</item>
+        <item name="drawableTint">@color/smalt</item>
+        <item name="background">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="Theme.HnHApp.ProgressBar" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateTint">@color/smalt</item>
+    </style>
+
+    <style name="Theme.HnHApp.Catalog.ProgressBar" parent="Theme.HnHApp.ProgressBar" />
+
+    <style name="Theme.HnHApp.Detail.ProgressBar" parent="Theme.HnHApp.ProgressBar" />
+
+    <style name="Theme.HnHApp.Divider" parent="Widget.Material3.MaterialDivider" />
+
+    <style name="Theme.HnHApp.Detail.Divider" parent="Theme.HnHApp.Divider">
+        <item name="android:background">@color/seashell</item>
+    </style>
+
+    <style name="TextAppearance.BulletPoints" parent="TextAppearance">
+        <item name="android:textColor">@color/silver_chalice</item>
+    </style>
+
+    <style name="Theme.HnHApp.Detail.BulletPoints" parent="TextAppearance.BulletPoints">
+        <item name="android:textSize">@dimen/detail_body_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/detail_body_text_line</item>
+    </style>
+
+    <style name="TextAppearance.BottomSheet" parent="TextAppearance">
+        <item name="android:textSize">@dimen/bottom_sheet_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/bottom_sheet_text_line</item>
+    </style>
+
+    <style name="Theme.HnHApp.BottomSheet" parent="Widget.Material3.BottomSheet">
+        <item name="android:textAppearance">@style/TextAppearance.BottomSheet</item>
+    </style>
+</resources>

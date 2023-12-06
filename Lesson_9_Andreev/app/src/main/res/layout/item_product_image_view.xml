@@ -1,0 +1,5 @@
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/detailRecyclerImage"
+    android:layout_width="@dimen/item_product_image_size"
+    android:layout_height="@dimen/item_product_image_size"
+    android:padding="@dimen/item_image_padding" />
