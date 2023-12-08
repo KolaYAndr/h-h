@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/normal_100">
+
+    <ImageView
+        android:id="@+id/orderProductImage"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:layout_marginBottom="@dimen/normal_100"
+        android:layout_marginStart="@dimen/normal_100"
+        android:layout_marginVertical="@dimen/normal_100"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/orderProductName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/normal_100"
+        android:layout_marginEnd="6dp"
+        android:lineSpacingExtra="4dp"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/orderProductImage"
+        app:layout_constraintTop_toTopOf="@id/orderProductImage"
+        tools:text="M • Nike Tampa Bay Buccaneers Super Bowl LV" />
+
+    <TextView
+        android:id="@+id/orderProductDepartment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:lineSpacingExtra="4dp"
+        android:textColor="#A4A4A4"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/orderProductName"
+        app:layout_constraintTop_toBottomOf="@id/orderProductName"
+        tools:text="Джерси " />
+
+    <com.example.myapplication.presentation.view.QuantityButton
+        android:id="@+id/quantityButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/normal_100"
+        app:layout_constraintBottom_toBottomOf="@id/orderProductImage"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

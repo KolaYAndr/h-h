@@ -90,6 +90,15 @@
         <item name="android:textColor">@color/smalt</item>
     </style>
 
+    <style name="Theme.HnHApp.Order.ToolbarText" parent="TextAppearance.ToolbarText">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Theme.HnHApp.Order.Toolbar" parent="Theme.HnHApp.Toolbar">
+        <item name="android:background">@color/smalt</item>
+        <item name="actionMenuTextColor">@color/white</item>
+    </style>
+
     <style name="Theme.HnHApp.Button" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="shapeAppearance">@style/Theme.HnHApp.ShapeAppearanceButton</item>
         <item name="android:textAppearance">@style/TextAppearance.Button</item>
@@ -214,5 +223,18 @@
 
     <style name="Theme.HnHApp.BottomSheet" parent="Widget.Material3.BottomSheet">
         <item name="android:textAppearance">@style/TextAppearance.BottomSheet</item>
+    </style>
+
+    <style name="Theme.HnHApp.QuantityButton.Text" parent="TextAppearance">
+        <item name="android:textSize">@dimen/quantity_button_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/quantity_button_text_line</item>
+    </style>
+
+    <style name="Theme.HnHApp.QuantityButton.Text.TextView" parent="Theme.HnHApp.QuantityButton.Text">
+        <item name="android:textColor">@color/quantity_text_black</item>
+    </style>
+
+    <style name="Theme.HnHApp.QuantityButton.Text.Button" parent="Theme.HnHApp.QuantityButton.Text">
+        <item name="android:textColor">@color/quantity_text_blue</item>
     </style>
 </resources>

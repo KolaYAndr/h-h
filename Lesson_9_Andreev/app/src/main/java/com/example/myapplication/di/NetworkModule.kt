@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit
 
 @Module
 class NetworkModule {
-
     companion object {
         private const val BASE_ENDPOINT = "http://45.144.64.179/cowboys/api/"
     }

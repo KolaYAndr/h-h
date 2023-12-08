@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -29,6 +30,7 @@ class CatalogAdapter : RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder>() 
         differ.submitList(products)
         notifyItemRangeChanged(0, products.size)
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatalogViewHolder {
         return CatalogViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_product_view, parent, false)
@@ -50,11 +52,12 @@ class CatalogAdapter : RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder>() 
         onItemClickListener = listener
     }
 
-    inner class CatalogViewHolder(view: View) : RecyclerView.ViewHolder(view){
+    inner class CatalogViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val productImage = itemView.findViewById<ImageView>(R.id.productImage)
         private val productName = itemView.findViewById<TextView>(R.id.productName)
         private val productDepartment = itemView.findViewById<TextView>(R.id.productDepartment)
         private val productPrice = itemView.findViewById<TextView>(R.id.productPrice)
+        private val purchaseProduct = itemView.findViewById<TextView>(R.id.purchaseProduct)
         fun bind(product: Product) {
             itemView.apply {
                 Glide.with(this).load(product.images[0]).into(productImage)
@@ -65,6 +68,15 @@ class CatalogAdapter : RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder>() 
 
                 setOnClickListener {
                     onItemClickListener?.let { it(product) }
+                }
+
+                purchaseProduct.setOnClickListener {
+                    val availableSizes = product.sizes.filter { it.isAvailable }
+                    findNavController().navigate(
+                        CatalogFragmentDirections.actionCatalogFragmentToOrderFragment(
+                            availableSizes[0].value, product.preview, product.title, product.department, product.price
+                        )
+                    )
                 }
             }
         }

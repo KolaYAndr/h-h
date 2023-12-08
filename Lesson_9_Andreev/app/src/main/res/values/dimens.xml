@@ -66,5 +66,11 @@
     <dimen name="bottom_sheet_padding_vertical">10dp</dimen>
     <dimen name="bottom_sheet_text_size">16sp</dimen>
     <dimen name="bottom_sheet_text_line">2dp</dimen>
-    <dimen name="minimum_value">1dp</dimen>
+    <dimen name="border_stroke_width">1dp</dimen>
+    <dimen name="quantity_button_text_size">14sp</dimen>
+    <dimen name="quantity_button_text_line">4dp</dimen>
+    <dimen name="dash_gap">10dp</dimen>
+    <dimen name="quantity_shared_height">28dp</dimen>
+    <dimen name="quantity_button_width">32dp</dimen>
+    <dimen name="quantity_text_width">48dp</dimen>
 </resources>

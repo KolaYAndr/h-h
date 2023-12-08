@@ -2,6 +2,7 @@ package com.example.myapplication.di
 
 import com.example.myapplication.presentation.ui.fragments.catalog_fragment.CatalogFragment
 import com.example.myapplication.presentation.ui.fragments.detail_fragment.DetailFragment
+import com.example.myapplication.presentation.ui.fragments.order_ragment.OrderFragment
 import com.example.myapplication.presentation.ui.fragments.sign_in_fragment.SignInFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

@@ -162,7 +162,7 @@ class DetailFragment : Fragment() {
     private fun setProductBulletPoints(){
         binding.detailBulletPoints.text = buildString {
             product.details.forEach {
-                append(resources.getString(R.string.bullet_span, it))
+                append(resources.getString(R.string.bullet_string, it))
             }
         }
     }
