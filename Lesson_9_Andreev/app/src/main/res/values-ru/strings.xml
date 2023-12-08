@@ -16,6 +16,7 @@
     <string name="delivery_house_number_hint">Дом</string>
     <string name="delivery_flat_number_hint">Квартира</string>
     <string name="delivery_date_hint">Дата доставки</string>
-    <string name="purchase_for">Купить за %d</string>
+    <string name="purchase_for">Купить за %d ₽</string>
     <string name="placing_an_order">Оформление заказа</string>
+    <string name="size_is_required">Необходимо выбрать размер</string>
 </resources>

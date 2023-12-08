@@ -53,7 +53,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.example.myapplication.presentation.view.LoadableButton
+    <com.example.myapplication.presentation.custom_views.LoadableButton
         android:id="@+id/loadableButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

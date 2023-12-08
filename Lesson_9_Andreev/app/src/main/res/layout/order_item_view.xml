@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@id/orderProductName"
         tools:text="Джерси " />
 
-    <com.example.myapplication.presentation.view.QuantityButton
+    <com.example.myapplication.presentation.custom_views.QuantityButton
         android:id="@+id/quantityButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

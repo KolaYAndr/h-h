@@ -83,9 +83,11 @@ class DetailFragment : Fragment() {
     }
 
     private fun setPurchaseButton() {
-        val size = binding.detailTextInputEditText.text.toString()
         binding.detailPurchaseButton.setOnClickListener {
-            findNavController().navigate(
+            val size = binding.detailTextInputEditText.text.toString()
+            if (size.isEmpty())
+                requireView().makeSnackBar(resources.getString(R.string.size_is_required)).show()
+            else findNavController().navigate(
                 DetailFragmentDirections.actionDetailFragmentToOrderFragment(
                     size, product.preview, product.title, product.department, product.price
                 )
@@ -101,7 +103,6 @@ class DetailFragment : Fragment() {
                 val text = bundle.getString(SIZE_KEY)
                 binding.detailTextInputEditText.setText(text)
                 bottomSheetFragment.dismiss()
-                setPurchaseButton()
             }
         }
     }
@@ -135,6 +136,7 @@ class DetailFragment : Fragment() {
         setProductDepartment()
         setProductDescription()
         setProductBulletPoints()
+        setPurchaseButton()
     }
 
     private fun setToolbarTitle() {

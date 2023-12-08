@@ -1,4 +1,4 @@
-package com.example.myapplication.presentation.view
+package com.example.myapplication.presentation.custom_views
 
 import android.content.Context
 import android.util.AttributeSet
@@ -10,26 +10,27 @@ import com.example.myapplication.databinding.LoadableButtonBinding
 class LoadableButton @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null,
 ) : FrameLayout(context, attrs) {
-    private var binding: LoadableButtonBinding? = null
+    private var _binding: LoadableButtonBinding? = null
+    private val binding get() = _binding!!
 
     init {
-        binding = LoadableButtonBinding.bind(
+        _binding = LoadableButtonBinding.bind(
             LayoutInflater.from(context).inflate(R.layout.loadable_button, this, true)
         )
     }
 
     fun clickButton(listener: () -> Unit) {
-        binding!!.signInButton.setOnClickListener{listener()}
+        binding.signInButton.setOnClickListener{listener()}
     }
 
-    fun setStateLoading() = binding?.run {
+    fun setStateLoading() = binding.run {
         signInButton.text = ""
         progressBar.visibility = VISIBLE
         signInButton.isEnabled = false
 
     }
 
-    fun setStateData() = binding?.run {
+    fun setStateData() = binding.run {
         signInButton.text = resources.getString(R.string.sign_in_action)
         progressBar.visibility = GONE
         signInButton.isEnabled = true
@@ -37,6 +38,6 @@ class LoadableButton @JvmOverloads constructor(
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
-        binding = null
+        _binding = null
     }
 }

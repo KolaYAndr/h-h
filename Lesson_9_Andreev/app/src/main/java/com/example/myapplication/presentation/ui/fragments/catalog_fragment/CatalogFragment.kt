@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.data.responcemodel.ResponseStates
 import com.example.myapplication.databinding.FragmentCatalogBinding
-import com.example.myapplication.presentation.view.ItemDivider
+import com.example.myapplication.presentation.custom_views.ItemDivider
 import com.example.myapplication.utils.getError
 import com.example.myapplication.utils.makeSnackBar
 import dagger.android.support.AndroidSupportInjection
