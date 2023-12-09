@@ -10,6 +10,6 @@
     <color name="text_field_error">#ED4337</color>
     <color name="grey_background">#F4F4F4</color>
     <color name="grey_start">#C9C9C9</color>
-    <color name="quantity_text_black">#322F2B</color>
-    <color name="quantity_text_blue">#041E42</color>
+    <color name="grey_secondary">#322F2B</color>
+    <color name="black_secondary">#041E42</color>
 </resources>

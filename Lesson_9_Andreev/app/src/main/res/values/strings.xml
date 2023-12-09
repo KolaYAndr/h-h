@@ -25,4 +25,6 @@
     <string name="placing_an_order">Placing an order</string>
     <string name="order_product_name" translatable="false">%1s • %2s</string>
     <string name="size_is_required">Size is required</string>
+    <string name="choosing_a_building">Choosing a building</string>
+    <string name="choose">Choose</string>
 </resources>

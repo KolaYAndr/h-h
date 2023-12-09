@@ -2,12 +2,12 @@ package com.example.myapplication.presentation.ui.fragments.order_ragment
 
 import android.app.Activity
 import android.app.DatePickerDialog
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -25,10 +25,16 @@ import java.util.Locale
 class OrderFragment : Fragment() {
     private var _binding: FragmentOrderBinding? = null
     private val binding get() = _binding!!
-
     private val args: OrderFragmentArgs by navArgs()
-
     private val orderViewModel by viewModels<OrderViewModel>()
+
+//    private val activityResultLauncher =
+//        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+//            if (result.resultCode == Activity.RESULT_OK) {
+//                val data = result.data
+//                binding.orderAddressTextInputEditText.setText(data.toString())
+//            }
+//        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +50,7 @@ class OrderFragment : Fragment() {
         setOrderInfo()
         setDateEndIconClickListener()
         setQuantityButtonAndPurchaseButton()
+        setHouseEndIconClickListener()
     }
 
     override fun onDestroyView() {
@@ -86,14 +93,8 @@ class OrderFragment : Fragment() {
     private fun setHouseEndIconClickListener() {
         binding.orderAddressTextInputLayout.setEndIconOnClickListener {
             val intent = MapActivity.createStartIntent(requireContext())
-            val activityResultLauncher =
-                registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-                    if (result.resultCode == Activity.RESULT_OK) {
-                        val data: Intent? = result.data
-                        binding.orderAddressTextInputEditText.setText(data.toString())
-                    }
-                }
-            activityResultLauncher.launch(intent)
+//            activityResultLauncher.launch(intent)
+            startActivity(intent)
         }
     }
 
