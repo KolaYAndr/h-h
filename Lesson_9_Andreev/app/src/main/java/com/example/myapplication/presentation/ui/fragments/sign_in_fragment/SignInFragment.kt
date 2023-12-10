@@ -92,7 +92,7 @@ class SignInFragment : Fragment() {
                 is ResponseStates.Failure -> {
                     value.e.let {
                         view.makeSnackBar(
-                            message = it.getError() ?: "Error while getting response"
+                            message = it.getError() ?: getString(R.string.error_while_getting_response)
                         ).show()
                     }
                     binding.loadableButton.setStateData()
@@ -106,7 +106,7 @@ class SignInFragment : Fragment() {
                 else -> {
                     binding.loadableButton.setStateData()
                     view.makeSnackBar(
-                        message = "Unknown response type"
+                        message = getString(R.string.unknown_response_type)
                     ).show()
                 }
             }

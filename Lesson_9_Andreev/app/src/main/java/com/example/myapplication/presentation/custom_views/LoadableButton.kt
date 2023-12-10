@@ -13,6 +13,8 @@ class LoadableButton @JvmOverloads constructor(
     private var _binding: LoadableButtonBinding? = null
     private val binding get() = _binding!!
 
+    private var buttonText: String = ""
+
     init {
         _binding = LoadableButtonBinding.bind(
             LayoutInflater.from(context).inflate(R.layout.loadable_button, this, true)
@@ -24,7 +26,8 @@ class LoadableButton @JvmOverloads constructor(
     }
 
     fun setText(text: String){
-        binding.signInButton.text = text
+        buttonText = text
+        binding.signInButton.text = buttonText
     }
 
     fun setStateLoading() = binding.run {
@@ -35,7 +38,7 @@ class LoadableButton @JvmOverloads constructor(
     }
 
     fun setStateData() = binding.run {
-        signInButton.text = resources.getString(R.string.sign_in_action)
+        signInButton.text = buttonText
         progressBar.visibility = GONE
         signInButton.isEnabled = true
     }

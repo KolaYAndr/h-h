@@ -2,10 +2,13 @@ package com.example.myapplication.data
 
 import com.example.myapplication.data.product.Product
 import com.example.myapplication.data.requestmodel.RequestLogin
+import com.example.myapplication.data.requestmodel.RequestOrder
 import com.example.myapplication.data.responcemodel.BaseResponse
 import com.example.myapplication.data.responcemodel.ResponseLogin
+import com.example.myapplication.data.responcemodel.ResponseOrder
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -25,4 +28,9 @@ interface ApiLesson {
     suspend fun getProduct(
         @Path("id") id: String
     ): BaseResponse<Product>
+
+    @POST("orders/checkout")
+    suspend fun order(
+        @Body order: RequestOrder
+    ) : BaseResponse<ResponseOrder>
 }

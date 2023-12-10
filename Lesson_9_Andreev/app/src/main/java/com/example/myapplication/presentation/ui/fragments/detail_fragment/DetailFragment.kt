@@ -89,7 +89,7 @@ class DetailFragment : Fragment() {
                 requireView().makeSnackBar(resources.getString(R.string.size_is_required)).show()
             else findNavController().navigate(
                 DetailFragmentDirections.actionDetailFragmentToOrderFragment(
-                    size, product.preview, product.title, product.department, product.price
+                    product.id, size, product.preview, product.title, product.department, product.price
                 )
             )
         }

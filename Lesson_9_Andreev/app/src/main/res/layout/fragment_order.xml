@@ -51,16 +51,16 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/orderFlatNumberTextInputLayout"
+        android:id="@+id/orderApartmentTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/orderAddressTextInputLayout"
         android:layout_marginHorizontal="@dimen/normal_100"
         android:layout_marginTop="@dimen/normal_200"
-        android:hint="@string/delivery_flat_number_hint">
+        android:hint="@string/delivery_apartment_hint">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/orderFlatNumberTextInputEditText"
+            android:id="@+id/orderApartmentTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number" />
@@ -70,7 +70,7 @@
         android:id="@+id/oderDateInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/orderFlatNumberTextInputLayout"
+        android:layout_below="@id/orderApartmentTextInputLayout"
         android:layout_marginHorizontal="@dimen/normal_100"
         android:layout_marginTop="@dimen/normal_200"
         android:hint="@string/delivery_date_hint"

@@ -46,6 +46,10 @@
         android:name="com.example.myapplication.presentation.ui.fragments.order_ragment.OrderFragment"
         android:label="OrderFragment">
         <argument
+            android:name="productId"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
             android:name="productSize"
             app:argType="string"
             app:nullable="false" />

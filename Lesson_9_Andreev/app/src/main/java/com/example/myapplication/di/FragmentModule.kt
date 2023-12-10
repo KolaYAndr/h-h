@@ -17,4 +17,7 @@ abstract class FragmentModule {
 
     @ContributesAndroidInjector
     abstract fun detailFragment(): DetailFragment
+
+    @ContributesAndroidInjector
+    abstract fun orderFragment(): OrderFragment
 }

@@ -74,7 +74,7 @@ class CatalogAdapter : RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder>() 
                     val availableSizes = product.sizes.filter { it.isAvailable }
                     findNavController().navigate(
                         CatalogFragmentDirections.actionCatalogFragmentToOrderFragment(
-                            availableSizes[0].value, product.preview, product.title, product.department, product.price
+                            product.id, availableSizes[0].value, product.preview, product.title, product.department, product.price
                         )
                     )
                 }

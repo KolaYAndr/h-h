@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.presentation.ui.fragments.catalog_fragment.CatalogViewModel
 import com.example.myapplication.presentation.ui.fragments.detail_fragment.DetailViewModel
+import com.example.myapplication.presentation.ui.fragments.order_ragment.OrderViewModel
 import com.example.myapplication.presentation.ui.fragments.sign_in_fragment.SignInViewModel
 import dagger.Binds
 import dagger.Module
@@ -28,4 +29,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(DetailViewModel::class)
     abstract fun detailViewModel(detailViewModel: DetailViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(OrderViewModel::class)
+    abstract fun orderViewModel(orderViewModel: OrderViewModel): ViewModel
 }

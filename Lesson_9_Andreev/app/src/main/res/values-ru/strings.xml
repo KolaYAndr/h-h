@@ -14,7 +14,7 @@
     <string name="catalog">Каталог</string>
     <string name="size">Размер</string>
     <string name="delivery_house_number_hint">Дом</string>
-    <string name="delivery_flat_number_hint">Квартира</string>
+    <string name="delivery_apartment_hint">Квартира</string>
     <string name="delivery_date_hint">Дата доставки</string>
     <string name="purchase_for">Купить за %d ₽</string>
     <string name="placing_an_order">Оформление заказа</string>
@@ -22,4 +22,7 @@
     <string name="choosing_a_building">Выберите здание</string>
     <string name="choose">Выбрать</string>
     <string name="choose_location_first">Сначала выберите адресс</string>
+    <string name="error_while_getting_response">Ошибка во время получения ответа</string>
+    <string name="unknown_response_type">Неизвестный тип ответа</string>
+    <string name="order_created">Заказ №%1d от %2s был успешно создан</string>
 </resources>

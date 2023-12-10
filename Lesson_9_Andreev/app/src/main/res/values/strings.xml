@@ -17,7 +17,7 @@
     <string name="product_price" translatable="false">%d ₽</string>
     <string name="bullet_string" translatable="false">• %s\n</string>
     <string name="delivery_house_number_hint">House</string>
-    <string name="delivery_flat_number_hint">Flat</string>
+    <string name="delivery_apartment_hint">Apartment</string>
     <string name="delivery_date_hint">Delivery date</string>
     <string name="purchase_for">Purchase for %d ₽</string>
     <string name="decrement_sign" translatable="false">-</string>
@@ -28,4 +28,7 @@
     <string name="choosing_a_building">Choosing a building</string>
     <string name="choose">Choose</string>
     <string name="choose_location_first">Choose location first</string>
+    <string name="error_while_getting_response">Error while getting response</string>
+    <string name="unknown_response_type">Unknown response type</string>
+    <string name="order_created">Order №%1d of %2s was created successfully</string>
 </resources>
