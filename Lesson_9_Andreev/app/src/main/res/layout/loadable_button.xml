@@ -5,8 +5,7 @@
         android:id="@+id/signInButton"
         style="@style/Theme.HnHApp.LoadableButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sign_in_action"/>
+        android:layout_height="wrap_content"/>
 
     <ProgressBar
         android:id="@+id/progressBar"

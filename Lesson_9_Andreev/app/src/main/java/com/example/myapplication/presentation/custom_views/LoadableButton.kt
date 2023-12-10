@@ -23,6 +23,10 @@ class LoadableButton @JvmOverloads constructor(
         binding.signInButton.setOnClickListener{listener()}
     }
 
+    fun setText(text: String){
+        binding.signInButton.text = text
+    }
+
     fun setStateLoading() = binding.run {
         signInButton.text = ""
         progressBar.visibility = VISIBLE

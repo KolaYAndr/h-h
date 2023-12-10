@@ -1,36 +1,38 @@
 package com.example.myapplication.presentation.ui
 
-import android.Manifest
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.location.Geocoder
 import android.os.Bundle
 import android.view.View
-import androidx.activity.result.contract.ActivityResultContracts
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.R
 import com.example.myapplication.databinding.ActivityMapBinding
 import com.yandex.mapkit.MapKitFactory
+import com.yandex.mapkit.layers.GeoObjectTapEvent
 import com.yandex.mapkit.layers.GeoObjectTapListener
 import com.yandex.mapkit.map.GeoObjectSelectionMetadata
 
 class MapActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMapBinding
 
-    private val locationPermissionRequest =
-        registerForActivityResult(
-            ActivityResultContracts.RequestMultiplePermissions()
-        ) { permissions ->
-            when {
-                permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
-                }
+//    private val locationPermissionRequest =
+//        registerForActivityResult(
+//            ActivityResultContracts.RequestMultiplePermissions()
+//        ) { permissions ->
+//            when {
+//                permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
+//                }
+//
+//                permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
+//                }
+//
+//                else -> {
+//                }
+//            }
+//        }
 
-                permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
-                }
-
-                else -> {
-                }
-            }
-        }
 
     private val mapTapListener = GeoObjectTapListener {
         val selectionMetadata: GeoObjectSelectionMetadata = it
@@ -38,10 +40,45 @@ class MapActivity : AppCompatActivity() {
             .metadataContainer
             .getItem(GeoObjectSelectionMetadata::class.java)
         binding.mapView.mapWindow.map.selectGeoObject(selectionMetadata)
-        binding.mapBottomTextView.text = it.geoObject.name
-        binding.mapBottomTextView.visibility = View.VISIBLE
+        processAddressText(it)
         true
     }
+
+    private fun processAddressText(geoObjectTapEvent: GeoObjectTapEvent) {
+        val name = geoObjectTapEvent.geoObject.name
+        if (!name.isNullOrBlank()) {
+            binding.mapAddressTextView.text = name
+            binding.mapAddressTextView.visibility = View.VISIBLE
+        } else {
+            binding.mapAddressTextView.text = ""
+            binding.mapAddressTextView.visibility = View.GONE
+        }
+    }
+
+    private fun setChooseClickListener(){
+        binding.mapChooseTextView.setOnClickListener {
+            val address = binding.mapAddressTextView.text.toString()
+            if (address.isBlank())
+                Toast.makeText(this, getString(R.string.choose_location_first), Toast.LENGTH_SHORT).show()
+            else setResultAndFinish(address)
+        }
+    }
+
+    private fun setResultAndFinish(address: String) {
+        val resultIntent = Intent().apply {
+            putExtra(ADDRESS_RESULT, address)
+        }
+        setResult(Activity.RESULT_OK, resultIntent)
+        finish()
+    }
+
+    private fun setExitButton(){
+        binding.mapExitButton.setOnClickListener {
+            setResult(Activity.RESULT_CANCELED)
+            finish()
+        }
+    }
+//    val bestCityEverPoint = Point(59.939321, 30.315228)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,16 +88,25 @@ class MapActivity : AppCompatActivity() {
         binding = ActivityMapBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Geocoder(this)
-
-        locationPermissionRequest.launch(
-            arrayOf(
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            )
-        )
+//        binding.mapView.mapWindow.map.move(
+//            CameraPosition(
+//                bestCityEverPoint,
+//                17.0f, 150.0f, 30.0f
+//            ),
+//            Animation(Animation.Type.SMOOTH, 3f),
+//            null
+//        )
+//        locationPermissionRequest.launch(
+//            arrayOf(
+//                Manifest.permission.ACCESS_FINE_LOCATION,
+//                Manifest.permission.ACCESS_COARSE_LOCATION
+//            )
+//        )
 
         binding.mapView.mapWindow.map.addTapListener(mapTapListener)
+
+        setChooseClickListener()
+        setExitButton()
     }
 
     override fun onStart() {
@@ -76,8 +122,8 @@ class MapActivity : AppCompatActivity() {
     }
 
     companion object {
-        fun createStartIntent(context: Context): Intent {
-            return Intent(context, MapActivity::class.java)
-        }
+        fun createIntent(context: Context) = Intent(context, MapActivity::class.java)
+
+        const val ADDRESS_RESULT = "address result"
     }
 }

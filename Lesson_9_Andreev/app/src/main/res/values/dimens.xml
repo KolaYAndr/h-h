@@ -78,7 +78,7 @@
     <dimen name="map_textview_text_size">14sp</dimen>
     <dimen name="map_textview_text_line">6dp</dimen>
     <dimen name="map_choosing_padding_vertical">14dp</dimen>
-    <dimen name="map_choosing_padding_start">12dp</dimen>
+    <dimen name="map_exit_button_margin_start">12dp</dimen>
     <dimen name="map_choose_text_size">12sp</dimen>
     <dimen name="map_choose_text_line">4dp</dimen>
     <dimen name="map_choose_margin_horizontal">12dp</dimen>

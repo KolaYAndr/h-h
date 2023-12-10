@@ -51,6 +51,8 @@ class SignInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setButtonText()
+
         setErrorIcons()
 
         setPasswordDoOnTextChange()
@@ -74,6 +76,10 @@ class SignInFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setButtonText(){
+        binding.loadableButton.setText(resources.getString(R.string.sign_in_action))
     }
 
     private fun setSignInViewModelObserver(view: View) {

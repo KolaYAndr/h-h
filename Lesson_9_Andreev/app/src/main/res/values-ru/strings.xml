@@ -19,4 +19,7 @@
     <string name="purchase_for">Купить за %d ₽</string>
     <string name="placing_an_order">Оформление заказа</string>
     <string name="size_is_required">Необходимо выбрать размер</string>
+    <string name="choosing_a_building">Выберите здание</string>
+    <string name="choose">Выбрать</string>
+    <string name="choose_location_first">Сначала выберите адресс</string>
 </resources>

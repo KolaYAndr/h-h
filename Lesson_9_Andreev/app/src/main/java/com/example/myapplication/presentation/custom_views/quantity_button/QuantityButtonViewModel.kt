@@ -1,9 +1,9 @@
-package com.example.myapplication.presentation.ui.fragments.order_ragment
+package com.example.myapplication.presentation.custom_views.quantity_button
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class OrderViewModel : ViewModel() {
+class QuantityButtonViewModel : ViewModel() {
     private val _productCounterLiveData = MutableLiveData<Int>()
     val productCounterLiveData: MutableLiveData<Int> = _productCounterLiveData
 

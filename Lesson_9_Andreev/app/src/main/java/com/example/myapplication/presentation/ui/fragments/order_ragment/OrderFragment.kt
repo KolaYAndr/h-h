@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -16,6 +15,7 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentOrderBinding
+import com.example.myapplication.presentation.custom_views.quantity_button.QuantityButtonViewModel
 import com.example.myapplication.presentation.ui.MapActivity
 import com.example.myapplication.utils.DatePickerFragment
 import java.text.SimpleDateFormat
@@ -26,15 +26,16 @@ class OrderFragment : Fragment() {
     private var _binding: FragmentOrderBinding? = null
     private val binding get() = _binding!!
     private val args: OrderFragmentArgs by navArgs()
-    private val orderViewModel by viewModels<OrderViewModel>()
+    private val quantityButtonViewModel by viewModels<QuantityButtonViewModel>()
 
-//    private val activityResultLauncher =
-//        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-//            if (result.resultCode == Activity.RESULT_OK) {
-//                val data = result.data
-//                binding.orderAddressTextInputEditText.setText(data.toString())
-//            }
-//        }
+    private val activityResultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data = result.data
+                val address = data?.getStringExtra(MapActivity.ADDRESS_RESULT)
+                binding.orderAddressTextInputEditText.setText(address)
+            }
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,21 +61,22 @@ class OrderFragment : Fragment() {
 
     private fun setQuantityButtonAndPurchaseButton() {
         binding.orderProductView.quantityButton.setIncreaseButtonClickListener {
-            orderViewModel.increaseCounter()
+            quantityButtonViewModel.increaseCounter()
         }
         binding.orderProductView.quantityButton.setDecreaseButtonClickListener {
-            orderViewModel.decreaseCounter()
+            quantityButtonViewModel.decreaseCounter()
         }
         val productPrice = args.productPrice
         val observer = Observer<Int> {
-            val amount = orderViewModel.productCounterLiveData.value ?: 0
+            val amount = quantityButtonViewModel.productCounterLiveData.value ?: 0
             if (amount == 1) binding.orderProductView.quantityButton.setDecreaseButtonDisabled()
             if (amount > 1) binding.orderProductView.quantityButton.setDecreaseButtonEnabled()
             binding.orderProductView.quantityButton.setText(amount)
-            binding.orderPurchaseButton.text =
+            binding.orderPurchaseLoadableButton.setText(
                 resources.getString(R.string.purchase_for, productPrice * amount)
+            )
         }
-        orderViewModel.productCounterLiveData.observe(viewLifecycleOwner, observer)
+        quantityButtonViewModel.productCounterLiveData.observe(viewLifecycleOwner, observer)
     }
 
     private fun setDateEndIconClickListener() {
@@ -92,9 +94,8 @@ class OrderFragment : Fragment() {
 
     private fun setHouseEndIconClickListener() {
         binding.orderAddressTextInputLayout.setEndIconOnClickListener {
-            val intent = MapActivity.createStartIntent(requireContext())
-//            activityResultLauncher.launch(intent)
-            startActivity(intent)
+            val mapIntent = MapActivity.createIntent(requireContext())
+            activityResultLauncher.launch(mapIntent)
         }
     }
 
