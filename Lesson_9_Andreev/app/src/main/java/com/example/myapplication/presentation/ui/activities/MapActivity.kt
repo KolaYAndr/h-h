@@ -1,4 +1,4 @@
-package com.example.myapplication.presentation.ui
+package com.example.myapplication.presentation.ui.activities
 
 import android.app.Activity
 import android.content.Context

@@ -22,7 +22,7 @@ import com.example.myapplication.data.product.OrderProduct
 import com.example.myapplication.data.responcemodel.ResponseStates
 import com.example.myapplication.databinding.FragmentOrderBinding
 import com.example.myapplication.presentation.custom_views.quantity_button.QuantityButtonViewModel
-import com.example.myapplication.presentation.ui.MapActivity
+import com.example.myapplication.presentation.ui.activities.MapActivity
 import com.example.myapplication.utils.DatePickerFragment
 import com.example.myapplication.utils.getError
 import com.example.myapplication.utils.makeSnackBar
@@ -113,7 +113,7 @@ class OrderFragment : Fragment() {
                         ),
                         backgroundTint = ContextCompat.getColor(
                             requireContext(),
-                            R.color.black_secondary
+                            R.color.dark_blue_secondary
                         )
                     ).show()
                 }

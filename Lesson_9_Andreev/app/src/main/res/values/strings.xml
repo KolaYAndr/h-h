@@ -31,4 +31,8 @@
     <string name="error_while_getting_response">Error while getting response</string>
     <string name="unknown_response_type">Unknown response type</string>
     <string name="order_created">Order №%1d of %2s was created successfully</string>
+    <string name="permission_notifications_title">Receive notifications?</string>
+    <string name="permission_notifications_body">You will be able to receive notifications</string>
+    <string name="permission_notifications_yes">Yes, I agree</string>
+    <string name="permission_notifications_no">No, sorry</string>
 </resources>

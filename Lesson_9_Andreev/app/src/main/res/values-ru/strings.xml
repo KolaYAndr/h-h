@@ -25,4 +25,8 @@
     <string name="error_while_getting_response">Ошибка во время получения ответа</string>
     <string name="unknown_response_type">Неизвестный тип ответа</string>
     <string name="order_created">Заказ №%1d от %2s был успешно создан</string>
+    <string name="permission_notifications_title">Получать уведомления?</string>
+    <string name="permission_notifications_body">Вы сможете получать уведомления</string>
+    <string name="permission_notifications_yes">Да, я согласен</string>
+    <string name="permission_notifications_no">Извините, нет</string>
 </resources>

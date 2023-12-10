@@ -235,7 +235,7 @@
     </style>
 
     <style name="Theme.HnHApp.QuantityButton.Text.Button" parent="Theme.HnHApp.QuantityButton.Text">
-        <item name="android:textColor">@color/black_secondary</item>
+        <item name="android:textColor">@color/dark_blue_secondary</item>
     </style>
 
     <style name="TextAppearance.MapView.Text.Bottom" parent="TextAppearance">
@@ -245,7 +245,7 @@
 
     <style name="TextAppearance.MapView.Text.Top" parent="TextAppearance.MapView.Text.Bottom">
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/black_secondary</item>
+        <item name="android:textColor">@color/dark_blue_secondary</item>
     </style>
 
     <style name="TextAppearance.MapView.Text.Choose" parent="TextAppearance">
