@@ -116,6 +116,7 @@ class OrderFragment : Fragment() {
                             R.color.dark_blue_secondary
                         )
                     ).show()
+                    findNavController().navigateUp()
                 }
 
                 else -> {
