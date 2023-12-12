@@ -62,7 +62,7 @@ class DetailFragment : Fragment() {
         setDetailViewModelObserver(view)
         setNavigationBack()
         getProduct()
-        setEndIconClickListener()
+        setEditTextInput()
         setRefreshButton()
     }
 
@@ -82,8 +82,8 @@ class DetailFragment : Fragment() {
         }
     }
 
-    private fun setEndIconClickListener() {
-        binding.detailTextInputLayout.setEndIconOnClickListener {
+    private fun setEditTextInput() {
+        binding.detailTextInputEditText.setOnClickListener {
             val bottomSheetFragment = BottomSheetFragment(product)
             bottomSheetFragment.show(parentFragmentManager, "tag")
             parentFragmentManager.setFragmentResultListener(REQUEST_SIZE_KEY, this) { _, bundle ->
