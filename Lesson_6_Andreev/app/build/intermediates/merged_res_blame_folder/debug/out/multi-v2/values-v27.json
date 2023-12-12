@@ -1,0 +1,28 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.myapplication.app-mergeDebugResources-45:/values-v27/values-v27.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\kolay\\OneDrive\\Desktop\\h-h\\Lesson_6_Andreev\\app\\src\\main\\res\\values-v27\\themes.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "57",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "297"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "292"
+                    }
+                }
+            ]
+        }
+    ]
+}

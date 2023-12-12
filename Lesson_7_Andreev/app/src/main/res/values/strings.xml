@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name" translatable="false">Lesson 8</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_in_title">@string/sign_in</string>
+    <string name="sign_in_action">@string/sign_in</string>
+    <string name="sign_in_login_hint">Login</string>
+    <string name="sign_in_password_hint">Password</string>
+    <string name="sign_in_login_error">Field is filled in incorrectly</string>
+    <string name="sign_in_password_error">Field is filled in incorrectly</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="purchase">Purchase</string>
+    <string name="purchase_action">@string/purchase</string>
+    <string name="unexpected_error">Unexpected error occurred</string>
+    <string name="refresh">Refresh</string>
+    <string name="catalog">Catalog</string>
+    <string name="product_price" translatable="false">%d ₽</string>
+</resources>
