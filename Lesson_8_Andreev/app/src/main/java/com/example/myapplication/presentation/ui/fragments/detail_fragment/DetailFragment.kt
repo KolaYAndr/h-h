@@ -62,7 +62,6 @@ class DetailFragment : Fragment() {
         setDetailViewModelObserver(view)
         setNavigationBack()
         getProduct()
-        setEndIconClickListener()
         setRefreshButton()
     }
 
@@ -82,8 +81,8 @@ class DetailFragment : Fragment() {
         }
     }
 
-    private fun setEndIconClickListener() {
-        binding.detailTextInputLayout.setEndIconOnClickListener {
+    private fun setSizeInput() {
+        binding.detailTextInputEditText.setOnClickListener {
             val bottomSheetFragment = BottomSheetFragment(product)
             bottomSheetFragment.show(parentFragmentManager, "tag")
             parentFragmentManager.setFragmentResultListener(REQUEST_SIZE_KEY, this) { _, bundle ->
@@ -115,6 +114,10 @@ class DetailFragment : Fragment() {
         }
     }
 
+    private fun setPurchaseButtonVisibility(){
+        binding.detailPurchaseButton.visibility = View.VISIBLE
+    }
+
     private fun setProductInfo(){
         setToolbarTitle()
         setProductPrice()
@@ -123,6 +126,8 @@ class DetailFragment : Fragment() {
         setProductDepartment()
         setProductDescription()
         setProductBulletPoints()
+        setSizeInput()
+        setPurchaseButtonVisibility()
     }
 
     private fun setToolbarTitle() {
