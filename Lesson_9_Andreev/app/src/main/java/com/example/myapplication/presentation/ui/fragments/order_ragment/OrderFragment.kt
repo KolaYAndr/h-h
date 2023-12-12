@@ -72,9 +72,9 @@ class OrderFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setNavigationBack()
         setOrderInfo()
-        setDateEndIconClickListener()
+        setDateEditTextInput()
         setQuantityButtonAndPurchaseButtonText()
-        setHouseEndIconClickListener()
+        setAddressEditTextInput()
         setPurchaseButtonObserver(view)
         setPurchaseButtonFunctionality()
     }
@@ -184,8 +184,8 @@ class OrderFragment : Fragment() {
         quantityButtonViewModel.productCounterLiveData.observe(viewLifecycleOwner, observer)
     }
 
-    private fun setDateEndIconClickListener() {
-        binding.oderDateInputLayout.setEndIconOnClickListener {
+    private fun setDateEditTextInput() {
+        binding.oderDateInputEditText.setOnClickListener {
             val listener =
                 DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
                     val simpleDateFormat = SimpleDateFormat("dd MMMM", Locale.getDefault())
@@ -198,8 +198,8 @@ class OrderFragment : Fragment() {
         }
     }
 
-    private fun setHouseEndIconClickListener() {
-        binding.orderAddressTextInputLayout.setEndIconOnClickListener {
+    private fun setAddressEditTextInput() {
+        binding.orderAddressTextInputEditText.setOnClickListener {
             val mapIntent = MapActivity.createIntent(requireContext())
             activityResultLauncher.launch(mapIntent)
         }
@@ -223,16 +223,14 @@ class OrderFragment : Fragment() {
     }
 
     private fun setProductName() {
-        val imageSize = args.productSize
+        val productSize = args.productSize
         val productName = args.productName
         binding.orderProductView.orderProductName.text =
-            resources.getString(R.string.order_product_name, imageSize, productName)
+            resources.getString(R.string.order_product_name, productSize, productName)
     }
 
     private fun setProductDepartment() {
         val productDepartment = args.productDepartment
         binding.orderProductView.orderProductDepartment.text = productDepartment
     }
-
-
 }

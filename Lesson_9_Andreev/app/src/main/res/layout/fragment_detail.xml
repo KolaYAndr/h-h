@@ -91,9 +91,9 @@
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/detailViewPager"
-                    android:layout_gravity="center"
                     android:layout_width="@dimen/detail_viewpager_size"
-                    android:layout_height="@dimen/detail_viewpager_size" />
+                    android:layout_height="@dimen/detail_viewpager_size"
+                    android:layout_gravity="center" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/detailImagesRecycler"
@@ -128,8 +128,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:gravity="center"
                         android:layout_marginEnd="@dimen/normal_100"
+                        android:gravity="center"
                         android:paddingHorizontal="@dimen/detail_badge_horizontal_padding"
                         android:paddingVertical="@dimen/detail_badge_vertical_padding"
                         tools:background="@color/smalt"
@@ -170,8 +170,9 @@
                         android:id="@+id/detailTextInputEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:focusable="false"
                         android:clickable="false"
-                        android:focusable="false" />
+                        android:cursorVisible="false" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -213,6 +214,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/detailViewFlipper"
         android:layout_margin="@dimen/normal_100"
-        android:text="@string/purchase_action" />
+        android:text="@string/purchase_action"
+        android:visibility="gone" />
 
 </RelativeLayout>

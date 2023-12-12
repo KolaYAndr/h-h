@@ -1,5 +1,6 @@
 package com.example.myapplication.presentation.ui.fragments.bottom_sheet_fragment
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,7 +25,7 @@ class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetAdapter.BottomSheetVi
     private val differ = AsyncListDiffer(this, callback)
 
     fun submitList(sizes: List<Size>) {
-        differ.submitList(sizes.filter { it.isAvailable })
+        differ.submitList(sizes)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BottomSheetViewHolder {
@@ -50,13 +51,14 @@ class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetAdapter.BottomSheetVi
 
     inner class BottomSheetViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val itemSizeText = itemView.findViewById<TextView>(R.id.itemSizeText)
-        fun bind(size: Size){
+        fun bind(size: Size) {
             itemView.apply {
                 itemSizeText.text = size.value
-
-                setOnClickListener {
-                    onItemClickListener?.let { it(size) }
-                }
+                if (size.isAvailable) {
+                    setOnClickListener {
+                        onItemClickListener?.let { it(size) }
+                    }
+                } else itemSizeText.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             }
         }
     }
