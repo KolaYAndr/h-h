@@ -254,4 +254,9 @@
         <item name="android:textSize">@dimen/map_choose_text_size</item>
         <item name="android:lineSpacingExtra">@dimen/map_choose_text_line</item>
     </style>
+
+    <style name="Theme.HnhApp.Settings.Image.CircularShape" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+
 </resources>

@@ -21,8 +21,9 @@
         android:src="@drawable/star_image"
         android:clickable="true"
         android:focusable="true"
+        android:scaleType="centerCrop"
         android:layout_centerHorizontal="true"
-        android:shape="@drawable/oval_background" />
+        app:shapeAppearanceOverlay="@style/Theme.HnhApp.Settings.Image.CircularShape" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/settingsNameTextInputLayout"
@@ -91,7 +92,7 @@
             android:id="@+id/settingsOtherOccupationTextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+            android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.example.myapplication.presentation.custom_views.LoadableButton

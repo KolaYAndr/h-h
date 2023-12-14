@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import com.example.myapplication.databinding.BottomSheetFragmentBinding
+import com.example.myapplication.databinding.FragmentBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class BottomSheetFragment<T: Any>(
@@ -14,7 +14,7 @@ class BottomSheetFragment<T: Any>(
     private val list: List<T>
 ) :
     BottomSheetDialogFragment() {
-    private var _binding: BottomSheetFragmentBinding? = null
+    private var _binding: FragmentBottomSheetBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var bottomSheetAdapter: BottomSheetAdapter<T>
@@ -24,7 +24,7 @@ class BottomSheetFragment<T: Any>(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = BottomSheetFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentBottomSheetBinding.inflate(inflater, container, false)
         return binding.root
     }
 
