@@ -39,6 +39,16 @@
                 android:resource="@xml/provider_paths"/>
         </provider>
 
+        <service android:name=".data.services.ServiceWithBoth"
+            android:exported="false">
+        </service>
+
+        <service android:name=".data.services.ServiceWithLaunch"
+            android:exported="false"/>
+
+        <service android:name=".data.services.ServiceWithBoth"
+            android:exported="false"/>
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_launcher_foreground" />
