@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name" translatable="false">Lesson 10</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_in_title">@string/sign_in</string>
+    <string name="sign_in_action">@string/sign_in</string>
+    <string name="sign_in_login_hint">Login</string>
+    <string name="sign_in_password_hint">Password</string>
+    <string name="sign_in_login_error">Field is filled in incorrectly</string>
+    <string name="sign_in_password_error">Field is filled in incorrectly</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="purchase">Purchase</string>
+    <string name="purchase_action">@string/purchase</string>
+    <string name="unexpected_error">Unexpected error occurred</string>
+    <string name="refresh">Refresh</string>
+    <string name="catalog">Catalog</string>
+    <string name="size">Size</string>
+    <string name="product_price" translatable="false">%d ₽</string>
+    <string name="bullet_string" translatable="false">• %s\n</string>
+    <string name="delivery_house_number_hint">House</string>
+    <string name="delivery_apartment_hint">Apartment</string>
+    <string name="delivery_date_hint">Delivery date</string>
+    <string name="purchase_for">Purchase for %d ₽</string>
+    <string name="decrement_sign" translatable="false">-</string>
+    <string name="increment_sign" translatable="false">+</string>
+    <string name="placing_an_order">Placing an order</string>
+    <string name="order_product_name" translatable="false">%1s • %2s</string>
+    <string name="size_is_required">Size is required</string>
+    <string name="choosing_a_building">Choosing a building</string>
+    <string name="choose">Choose</string>
+    <string name="choose_location_first">Choose location first</string>
+    <string name="error_while_getting_response">Error while getting response</string>
+    <string name="unknown_response_type">Unknown response type</string>
+    <string name="order_created">Order №%1d of %2s was created successfully</string>
+    <string name="permission_notifications_title">Receive notifications?</string>
+    <string name="permission_notifications_body">You will be able to receive notifications</string>
+    <string name="permission_notifications_yes">Yes, I agree</string>
+    <string name="permission_notifications_no">No, sorry</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="occupation">Occupation</string>
+    <string name="other_occupation">Other occupation</string>
+    <string name="change">Change</string>
+    <string name="unexpected_type_response">Unexpected type response</string>
+    <string name="take_picture">Take a picture</string>
+    <string name="pick_from_gallery">Pick from gallery</string>
+    <string name="profile_was_changed_successfully">Profile was changed successfully</string>
+</resources>
