@@ -127,7 +127,7 @@ class SettingsFragment : Fragment() {
         }
 
     private fun pickFromGallery() {
-        galleryResultLauncher.launch("image/")
+        galleryResultLauncher.launch("image/*")
     }
 
     private fun setOccupationEditText() {
