@@ -13,23 +13,36 @@
         app:navigationIcon="@drawable/ic_arrow_back"
         app:navigationIconTint="@color/smalt" />
 
+    <FrameLayout
+        android:layout_below="@id/settingsToolbar"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/settingsProfileImage"
         android:layout_width="@dimen/settings_profile_imageview_size"
         android:layout_height="@dimen/settings_profile_imageview_size"
-        android:layout_below="@id/settingsToolbar"
-        android:src="@drawable/star_image"
         android:clickable="true"
         android:focusable="true"
+        android:background="@color/grey_secondary"
         android:scaleType="centerCrop"
-        android:layout_centerHorizontal="true"
         app:shapeAppearanceOverlay="@style/Theme.HnhApp.Settings.Image.CircularShape" />
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_camera"
+        android:layout_gravity="center"/>
+
+    </FrameLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/settingsNameTextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/settingsProfileImage"
+        android:layout_below="@id/frame"
         android:layout_marginHorizontal="@dimen/normal_100"
         android:layout_marginTop="@dimen/normal_200"
         android:hint="@string/name">

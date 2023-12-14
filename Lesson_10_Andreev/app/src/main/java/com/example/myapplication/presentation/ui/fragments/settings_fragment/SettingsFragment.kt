@@ -41,6 +41,7 @@ class SettingsFragment : Fragment() {
         setChangeButton()
         setOccupationEditText()
         setImagePicker()
+        setToolbar()
     }
 
     private fun setImagePicker() {
@@ -145,6 +146,12 @@ class SettingsFragment : Fragment() {
                     binding.settingsOtherOccupationTextInputLayout.visibility = View.VISIBLE
                 } else binding.settingsOtherOccupationTextInputLayout.visibility = View.GONE
             }
+        }
+    }
+
+    private fun setToolbar(){
+        binding.settingsToolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
         }
     }
 
