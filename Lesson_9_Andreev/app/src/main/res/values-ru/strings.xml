@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sign_in">Войти</string>
+    <string name="sign_in_title">@string/sign_in</string>
+    <string name="sign_in_action">@string/sign_in</string>
+    <string name="sign_in_login_hint">Логин</string>
+    <string name="sign_in_password_hint">Пароль</string>
+    <string name="sign_in_login_error">Поле заполнено неверно</string>
+    <string name="sign_in_password_error">Поле заполнено неверно</string>
+    <string name="purchase">Купить</string>
+    <string name="purchase_action">@string/purchase</string>
+    <string name="unexpected_error">Произошла непредвиденная ошибка</string>
+    <string name="refresh">Обновить</string>
+    <string name="catalog">Каталог</string>
+    <string name="size">Размер</string>
+    <string name="delivery_house_number_hint">Дом</string>
+    <string name="delivery_apartment_hint">Квартира</string>
+    <string name="delivery_date_hint">Дата доставки</string>
+    <string name="purchase_for">Купить за %d ₽</string>
+    <string name="placing_an_order">Оформление заказа</string>
+    <string name="size_is_required">Необходимо выбрать размер</string>
+    <string name="choosing_a_building">Выберите здание</string>
+    <string name="choose">Выбрать</string>
+    <string name="choose_location_first">Сначала выберите адресс</string>
+    <string name="error_while_getting_response">Ошибка во время получения ответа</string>
+    <string name="unknown_response_type">Неизвестный тип ответа</string>
+    <string name="order_created">Заказ №%1d от %2s был успешно создан</string>
+    <string name="permission_notifications_title">Получать уведомления?</string>
+    <string name="permission_notifications_body">Вы сможете получать уведомления</string>
+    <string name="permission_notifications_yes">Да, я согласен</string>
+    <string name="permission_notifications_no">Извините, нет</string>
+</resources>

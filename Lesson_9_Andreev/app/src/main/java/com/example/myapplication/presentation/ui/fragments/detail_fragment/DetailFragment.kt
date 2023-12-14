@@ -76,10 +76,24 @@ class DetailFragment : Fragment() {
         detailViewModel.getProduct(id)
     }
 
-    private fun setRefreshButton(){
+    private fun setRefreshButton() {
         binding.detailRefreshButton.setOnClickListener {
             getProduct()
         }
+    }
+
+    private fun setPurchaseButton() {
+        binding.detailPurchaseButton.setOnClickListener {
+            val size = binding.detailTextInputEditText.text.toString()
+            if (size.isEmpty())
+                requireView().makeSnackBar(resources.getString(R.string.size_is_required)).show()
+            else findNavController().navigate(
+                DetailFragmentDirections.actionDetailFragmentToOrderFragment(
+                    product.id, size, product.preview, product.title, product.department, product.price
+                )
+            )
+        }
+        binding.detailPurchaseButton.visibility = View.VISIBLE
     }
 
     private fun setEditTextInput() {
@@ -115,7 +129,7 @@ class DetailFragment : Fragment() {
         }
     }
 
-    private fun setProductInfo(){
+    private fun setProductInfo() {
         setToolbarTitle()
         setProductPrice()
         setProductBadge()
@@ -123,17 +137,18 @@ class DetailFragment : Fragment() {
         setProductDepartment()
         setProductDescription()
         setProductBulletPoints()
+        setPurchaseButton()
     }
 
     private fun setToolbarTitle() {
         binding.detailToolbarText.text = product.title
     }
 
-    private fun setProductPrice(){
+    private fun setProductPrice() {
         binding.detailProductPrice.text = resources.getString(R.string.product_price, product.price)
     }
 
-    private fun setProductBadge(){
+    private fun setProductBadge() {
         val productBadge = product.badge.first()
         binding.detailProductBadge.text = productBadge.value
 
@@ -147,19 +162,19 @@ class DetailFragment : Fragment() {
         binding.detailProductBadge.background = gradientDrawable
     }
 
-    private fun setProductName(){
+    private fun setProductName() {
         binding.detailProductName.text = product.title
     }
 
-    private fun setProductDepartment(){
+    private fun setProductDepartment() {
         binding.detailProductDepartment.text = product.department
     }
 
-    private fun setProductDescription(){
+    private fun setProductDescription() {
         binding.detailProductDescription.text = product.description.substring(13)
     }
 
-    private fun setProductBulletPoints(){
+    private fun setProductBulletPoints() {
         binding.detailBulletPoints.text = buildString {
             product.details.forEach {
                 append(resources.getString(R.string.bullet_string, it))

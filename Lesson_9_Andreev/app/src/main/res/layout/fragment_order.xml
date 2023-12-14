@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/orderToolbar"
+        style="@style/Theme.HnHApp.Order.Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:menu="@menu/toolbar_menu"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/white">
+
+        <TextView
+            android:id="@+id/orderToolbarText"
+            style="@style/Theme.HnHApp.Order.ToolbarText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/placing_an_order" />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <include
+        android:id="@+id/orderProductView"
+        layout="@layout/order_item_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/orderToolbar" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/orderAddressTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/orderProductView"
+        android:layout_marginHorizontal="@dimen/normal_100"
+        android:layout_marginTop="@dimen/normal_200"
+        android:hint="@string/delivery_house_number_hint"
+        app:endIconDrawable="@drawable/ic_arrow_forward"
+        app:endIconMode="custom"
+        app:endIconTint="@color/smalt">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/orderAddressTextInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:clickable="false"
+            android:cursorVisible="false" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/orderApartmentTextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/orderAddressTextInputLayout"
+        android:layout_marginHorizontal="@dimen/normal_100"
+        android:layout_marginTop="@dimen/normal_200"
+        android:hint="@string/delivery_apartment_hint">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/orderApartmentTextInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/oderDateInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/orderApartmentTextInputLayout"
+        android:layout_marginHorizontal="@dimen/normal_100"
+        android:layout_marginTop="@dimen/normal_200"
+        android:hint="@string/delivery_date_hint"
+        app:endIconDrawable="@drawable/ic_arrow_forward"
+        app:endIconMode="custom"
+        app:endIconTint="@color/smalt">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/oderDateInputEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:clickable="false"
+            android:cursorVisible="false" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.example.myapplication.presentation.custom_views.LoadableButton
+        android:id="@+id/orderPurchaseLoadableButton"
+        style="@style/Theme.HnHApp.PurchaseButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="@dimen/normal_100"
+        android:gravity="center" />
+
+</RelativeLayout>
