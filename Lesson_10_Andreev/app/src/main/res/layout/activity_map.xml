@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginHorizontal="@dimen/normal_50"
+        android:layout_marginTop="@dimen/normal_50"
+        android:background="@drawable/map_rounded_rectangle_shape"
+        android:elevation="@dimen/elevation"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/map_choosing_padding_vertical">
+
+        <ImageButton
+            android:id="@+id/mapExitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/map_exit_button_margin_start"
+            android:background="@color/white"
+            android:src="@drawable/ic_close" />
+
+        <TextView
+            android:id="@+id/mapChoosingTextView"
+            style="@style/TextAppearance.MapView.Text.Top"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/normal_200"
+            android:layout_weight="@integer/map_choosing_text_weight"
+            android:text="@string/choosing_a_building" />
+
+        <TextView
+            android:id="@+id/mapChooseTextView"
+            style="@style/TextAppearance.MapView.Text.Choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/map_choose_margin_horizontal"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingHorizontal="@dimen/map_choose_padding_horizontal"
+            android:paddingVertical="@dimen/map_choose_padding_vertical"
+            android:text="@string/choose" />
+    </LinearLayout>
+
+    <com.yandex.mapkit.mapview.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true" />
+
+    <TextView
+        android:id="@+id/mapAddressTextView"
+        style="@style/TextAppearance.MapView.Text.Bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="@dimen/normal_100"
+        android:layout_marginBottom="@dimen/normal_100"
+        android:background="@drawable/map_rounded_rectangle_shape"
+        android:elevation="@dimen/elevation"
+        android:gravity="center"
+        android:paddingVertical="@dimen/map_textview_padding_vertical"
+        android:visibility="gone"
+        tools:text="г. Саранск, ул. Ярославская, 11к1" />
+
+</RelativeLayout>

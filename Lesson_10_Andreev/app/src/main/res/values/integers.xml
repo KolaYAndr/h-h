@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="item_department_max_lines">1</integer>
+    <integer name="detail_toolbar_max_lines">1</integer>
+    <integer name="map_choosing_text_weight">1</integer>
+    <integer name="default_request_product_size">20</integer>
+</resources>
